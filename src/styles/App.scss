@@ -1,0 +1,18 @@
+@import './header.scss';
+@import './main.scss';
+@import './footer.scss';
+@import './items.scss';
+@import './search.scss';
+
+.App {
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-right: 10px;
+  padding-left: 10px;
+}

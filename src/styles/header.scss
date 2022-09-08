@@ -1,0 +1,26 @@
+.header {
+    min-height: 80px;
+    background-color: rgb(75, 141, 119);
+
+    &__content {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    &__logo {
+        flex: 1 1 auto;
+    }
+
+    &__navigation {
+        flex: 3 1 auto;
+    }
+  }
+
+.navigation {
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+}

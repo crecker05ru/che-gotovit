@@ -1,0 +1,31 @@
+.items {
+    &__content {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        align-items: center;
+        align-content: center;
+        vertical-align: middle;
+        gap: 10px;
+    }
+
+    &__item {
+        padding: 10px;
+        flex: 0 0 30%;
+        min-height: 500px;
+        margin-bottom: 20px;
+        border: 3px solid  #000;
+        border-radius: 10px;
+        background-color: #fff;
+    }
+}
+.item {
+    &__image img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+    &__ingredient {
+        list-style: decimal;
+    }
+}

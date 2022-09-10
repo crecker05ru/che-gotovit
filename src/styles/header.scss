@@ -1,6 +1,7 @@
 .header {
     min-height: 80px;
     background-color: rgb(75, 141, 119);
+    color: #fff;
 
     &__content {
         display: flex;
@@ -22,5 +23,10 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-evenly;
+    }
+    &__item a{
+        &:hover {
+            color: rgb(187, 187, 187);
+        }
     }
 }

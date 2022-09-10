@@ -6,6 +6,12 @@ import Footer from "./components/Footer";
 import { Routes, Route } from "react-router-dom";
 import ItemInfo from "./components/ItemInfo";
 import Items from "./components/Items";
+import FoodPage from "./pages/Food";
+import WherePage from "./pages/Where";
+import ServicePage from "./pages/Service";
+import JobsPage from "./pages/Job";
+import ContactsPage from "./pages/Contacts";
+import AboutUsPage from "./pages/AboutUs";
 
 function App() {
   return (
@@ -24,6 +30,13 @@ function App() {
             }
           />
         </Route>
+        <Route path='food' element={<FoodPage/>}/>
+        <Route path='where' element={<WherePage/>}/>
+        <Route path='service' element={<ServicePage/>}/>
+        <Route path='job' element={<JobsPage/>} />
+        <Route path='contacts' element={<ContactsPage/>} />
+        <Route path='about' element={<AboutUsPage/>} />
+
       </Routes>
       <Footer />
     </div>

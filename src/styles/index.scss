@@ -8,6 +8,17 @@ body {
   box-sizing: border-box;
 }
 
+::-webkit-scrollbar{
+  width: 7px;
+  background: rgba(206, 206, 206, 0.2);
+  border-radius: 15px;
+  }
+  
+  ::-webkit-scrollbar-thumb{
+  background: rgb(75, 141, 119);
+  border-radius: 15px;
+  }
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

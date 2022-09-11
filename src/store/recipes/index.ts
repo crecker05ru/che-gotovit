@@ -1,6 +1,15 @@
+import { Recipe, RecipeInfo } from './../../types/recipes';
 import { http } from './../../api/http';
-import { createSlice,createAsyncThunk } from  '@reduxjs/toolkit'
+import { createSlice,createAsyncThunk,PayloadAction } from  '@reduxjs/toolkit'
+export interface RecipesState {
+    recipes: [Recipe] | []
+    status: 'idle' | 'loading' | 'failed'
+  }
 
+const initialState: RecipesState =  {
+    recipes: [],
+    status: 'idle'
+}
 export const fetchRecipes = createAsyncThunk(
     'recipes/fetchRecipes',
     async (query: {url: string, options: {}}) => {
@@ -11,14 +20,11 @@ export const fetchRecipes = createAsyncThunk(
 
 export const recipesSlice = createSlice({
     name: 'recipes',
-    initialState: {
-        recipes: [],
-        status: ''
-    },
+    initialState,
     reducers: {
         setRecipes: (state, action) => {
             state.recipes = action.payload
-        }
+        },
     },
     extraReducers: (builder) => {
         builder.addCase(fetchRecipes.pending, (state) => {

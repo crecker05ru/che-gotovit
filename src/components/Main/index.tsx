@@ -54,7 +54,7 @@ export default function Main() {
         </div>
         <div className="main__items">
           <Outlet />
-          <Items itemData={recipes} />
+          {/* <Items /> */}
         </div>
       </div>
     </main>

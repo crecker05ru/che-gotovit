@@ -19,8 +19,8 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Main />}>
-          <Route path="item-info/:title" element={<ItemInfo />} />
-          {/* <Route path="/" element={<Items />} /> */}
+          {/* <Route path="item-info/:title" element={<ItemInfo />} /> */}
+          <Route path="/" element={<Items />} />
           <Route
             path="*"
             element={

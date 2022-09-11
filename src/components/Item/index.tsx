@@ -2,15 +2,17 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import FlipCard from "../FlipCard";
 
-export default function Item({ data }: any) {
+export default function Item({ data,openInfoCallback }: any) {
   const [isFlipped, setIsFlipped] = useState(false);
   const navigate = useNavigate()
+  console.log('openInfoCallback',openInfoCallback)
 
   const navigateToItem = () => {
     navigate(`item-info/${data.recipe.label}`)
   }
+  
   return (
-    <div className="item" onClick={navigateToItem}>
+    <div className="item" onClick={() => openInfoCallback(data.recipe.label)}>
       <FlipCard isFlipped={isFlipped}>
         <div
           className="item__content"
@@ -30,7 +32,7 @@ export default function Item({ data }: any) {
           <ol className="item__ingredients">
             {data.recipe.ingredientLines.length &&
               data.recipe.ingredientLines.map((ingredient: string): any => (
-                <li className="item__ingredient">{ingredient}</li>
+                <li className="item__ingredient" key={ingredient}>{ingredient}</li>
               ))}
           </ol>
         </div>

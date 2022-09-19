@@ -2,6 +2,7 @@
   & span {
     font-weight: 600;
   }
+
   &__content {
     display: flex;
     flex-wrap: wrap;
@@ -11,11 +12,14 @@
     // vertical-align: middle;
     gap: 10px;
   }
+
   &__loader {
     transition: opacity ease-in 0.3s;
   }
+
   &__item {
     box-sizing: border-box;
+    box-shadow: 0px 0px 8px 3px rgb(209, 209, 209);
     padding: 10px;
     flex: 1 0 400px;
     max-width: calc(33.333% - 10px);
@@ -23,30 +27,35 @@
     // margin-right: 10px;
     min-height: 500px;
     margin-bottom: 20px;
-    border: 3px solid #000;
-    border-radius: 10px;
+    // border: 3px solid #000;
+    border-radius: 16px;
     background-color: #fff;
 
     @media (min-width: 320px) {
       max-width: calc(100% - 10px);
       flex: 1 0 250px;
     }
+
     @media (min-width: 700px) {
       max-width: calc(50% - 10px);
       // flex: 1 0 300px;
     }
+
     @media (min-width: 1023px) {
       max-width: calc(33.333% - 10px);
       flex: 1 0 400px;
     }
   }
 }
+
 .loader-in {
   opacity: 1;
 }
+
 .loader-out {
   opacity: 0;
 }
+
 .item {
   &__content {
   }
@@ -56,17 +65,21 @@
     height: auto;
     border-radius: 10px;
   }
+
   &__title {
     text-align: center;
     cursor: pointer;
     transition: all ease-in 0.2s;
+
     &:hover {
       transform: skewX(-15deg);
     }
   }
+
   &__description {
     word-break: break-all;
   }
+
   &__total-time-icon {
     background-image: url("./../assets/svg/total-time.svg");
     width: 20px;
@@ -74,33 +87,42 @@
     background-size: cover;
     background-position: 0 0;
   }
+
   &__nutrient-item {
     flex: 1 1 auto;
+
     span {
       padding-right: 5px;
     }
+
     div {
       margin-left: auto;
       margin-right: auto;
       text-align: center;
     }
   }
+
   &__nutrient-energy {
     // background-color: rgba(8, 111, 255, 0.5);
   }
+
   &__nutrient-fat {
     // background-color: rgba(255, 239, 8, 0.5);
   }
+
   &__nutrient-protein {
     // background-color: rgba(255, 0, 0, 0.5);
   }
+
   &__nutrient-сarbohydrate {
     // background-color: rgba(111, 255, 0, 0.5);
   }
+
   &__energy-quantity {
     position: relative;
     padding-left: 20px;
   }
+
   &__energy-icon {
     position: absolute;
     background-image: url("./../assets/svg/energy-bolt.svg");
@@ -116,6 +138,7 @@
     max-height: 420px;
     overflow-y: auto;
   }
+
   &__ingredient {
     list-style: decimal;
     margin-bottom: 5px;
@@ -125,13 +148,16 @@
     }
   }
 }
+
 .inline-block {
   display: inline-block;
 }
+
 .procent-icon {
   width: 150px;
   height: auto;
 }
+
 .item-info {
   box-sizing: border-box;
   background-color: #fff;
@@ -153,6 +179,7 @@
     height: auto;
     border-radius: 8px;
   }
+
   &__back-button {
     position: absolute;
     top: 10px;
@@ -165,6 +192,7 @@
     width: fit-content;
     border-radius: 8px;
     cursor: pointer;
+
     &::before {
       content: "";
       //   width: 20px;
@@ -191,8 +219,10 @@
     // justify-content: space-between;
     // gap: 10px;
   }
+
   &__health-labels {
     gap: 10px;
+
     & li {
       color: #fff;
       background-color: #002fff;
@@ -200,9 +230,11 @@
       padding: 5px;
     }
   }
+
   &__diet-labels {
     border: 3px solid #000;
     gap: 10px;
+
     & li {
       color: #fff;
       background-color: #00bd65;
@@ -210,8 +242,10 @@
       padding: 5px;
     }
   }
+
   &__cautions {
     gap: 10px;
+
     & li {
       color: #000;
       background-color: #ff5e00;
@@ -219,6 +253,7 @@
       padding: 5px;
     }
   }
+
   &__ingredients {
     // justify-content: center;
     // align-items: center;
@@ -226,6 +261,15 @@
   }
 
   &__calories {
+  }
+
+  &__type-tags {
+    border: 2px solid #000;
+    border-radius: 8px;
+    gap: 10px;
+  }
+
+  &__total-nutrients {
   }
 }
 
@@ -245,18 +289,22 @@
     justify-content: space-between;
     flex-wrap: wrap;
     align-items: center;
+
     &span {
       font-weight: 600;
     }
   }
+
   @media (min-width: 320px) {
     max-width: calc(100% - 10px);
     flex: 1 0 250px;
   }
+
   @media (min-width: 700px) {
     max-width: calc(50% - 10px);
     // flex: 1 0 300px;
   }
+
   @media (min-width: 1023px) {
     max-width: calc(33.3333% - 10px);
     flex: 1 0 400px;
@@ -270,5 +318,47 @@
     max-width: 100px;
     height: auto;
     border-radius: 8px;
+  }
+}
+
+.total-nutrients {
+  gap: 10px;
+
+  li {
+    color: #000;
+    background-color: #ab7f66;
+    border-radius: 8px;
+    padding: 5px;
+  }
+}
+
+.total-daily {
+  gap: 10px;
+
+  li {
+    color: #fff;
+    background-color: #00915c;
+    border-radius: 8px;
+    padding: 5px;
+  }
+}
+
+.digest {
+  &__item {
+    gap: 10px;
+    color: #fff;
+    background-color: #005291;
+    border-radius: 8px;
+    padding: 5px;
+  }
+  &__sub {
+    gap: 10px;
+    li {
+      color: #fff;
+      background-color: #7600b1;
+      border-radius: 8px;
+      padding: 5px;
+    }
+
   }
 }

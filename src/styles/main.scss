@@ -1,18 +1,31 @@
 .main {
-    min-height: calc(100vh - 160px);
-    background-color: antiquewhite;
+  min-height: calc(100vh - 160px);
+  background-color: antiquewhite;
 
-    &__title {
-        text-align: center;
-    }
-    &__search {
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 600px;
-        box-sizing: border-box;
-        margin-bottom: 70px;
-    }
-    &__items {
-        margin-bottom: 70px;
-    }
+  &__title {
+    text-align: center;
+  }
+  &__search {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 600px;
+    box-sizing: border-box;
+    margin-bottom: 70px;
+  }
+  // &__circle-svg {
+  //   background-color: rgb(88, 191, 191);
+  //   .procent-circle {
+  //     background-color: aqua;
+  //     // stroke: #fff;
+  //     d: path("M50, 0 Q95, 5 100,50");
+  //     path {
+  //       stroke-width: 1px;
+  //       stroke: #fff;
+  //       fill: none;
+  //     }
+  //   }
+  // }
+  &__items {
+    margin-bottom: 70px;
+  }
 }

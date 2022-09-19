@@ -1,0 +1,36 @@
+.procent-circle {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  // width: 10%;
+  // height: 10%;
+  // width: 250px;
+  // height: 250px;
+  &__value {
+    position: absolute;
+    width: 100px;
+    padding-right: 5px;
+    padding-left: 5px;
+    text-align: center;
+    top: 40px;
+    left: 10px;
+    font-size: 100%;
+  }
+  path {
+    // stroke: #000 !important;
+    stroke-dasharray: 316;
+    stroke-dashoffset: 0; // stroke-dashoffset: 316;
+    transition: all ease-in 0.2s;
+    &:hover {
+      filter: brightness(0.9);
+    }
+  }
+  // circle {
+  //   cx: 105px;
+  //   cy: 100px;
+  // }
+}
+.circle-svg {
+  width: 100%;
+  height: 100%;
+}

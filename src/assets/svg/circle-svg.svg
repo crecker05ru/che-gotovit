@@ -1,0 +1,10 @@
+<svg  className="circle-svg"
+id="svg-circle" 
+xmlns="http://www.w3.org/2000/svg" 
+xmlns:xlink="http://www.w3.org/1999/xlink" >
+<circle className="circle-svg__circle" cx="55" cy="55" r="50" style='stroke: #ffffff;stroke-width: 10px; fill: none;'>
+
+</circle>
+<path className="circle-svg__path" d="M55 5 
+A50,50 0 1,1 54,5 Z" style='stroke: #fff000;stroke-width: 4px; fill: none;'></path>
+</svg>

@@ -13,7 +13,7 @@ export interface RecipeInfo {
     healthLabels: [string]
     cautions: [string]
     ingredientLines: [string]
-    ingridients: [Ingredients]
+    ingredients: [Ingredients]
     calories: number
     totalWeight: number
     totalTime: number

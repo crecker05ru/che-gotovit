@@ -1,9 +1,11 @@
-@import './header.scss';
-@import './main.scss';
-@import './footer.scss';
-@import './items.scss';
-@import './search.scss';
-
+@import "./null.scss";
+@import "./header.scss";
+@import "./main.scss";
+@import "./footer.scss";
+@import "./items.scss";
+@import "./search.scss";
+@import "./loader.scss";
+@import "./procent-circle.scss";
 .App {
   display: flex;
   flex-direction: column;
@@ -15,4 +17,16 @@
   margin-right: auto;
   padding-right: 10px;
   padding-left: 10px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+.col {
+  display: flex;
+  flex-direction: column;
+}
+.gap-10 {
+  gap: 10px;
 }

@@ -79,7 +79,9 @@
   &__description {
     word-break: break-all;
   }
-
+  &__total-time {
+    align-items: center;
+  }
   &__total-time-icon {
     background-image: url("./../assets/svg/total-time.svg");
     width: 20px;
@@ -157,12 +159,18 @@
   width: 150px;
   height: auto;
 }
-
+.tag {
+  color: #fff;
+  background-color: #00eeff;
+  border-radius: 8px;
+  padding: 5px;
+}
 .item-info {
   box-sizing: border-box;
+  box-shadow: 0px 0px 8px 3px rgb(209, 209, 209);
   background-color: #fff;
   flex: 1 1 auto;
-  border-radius: 8px;
+  border-radius: 16px;
   padding: 15px; // adaptive crush
   position: relative;
 
@@ -171,7 +179,9 @@
     margin-right: auto;
     width: fit-content;
   }
-
+  &__header-title {
+    text-align: center;
+  }
   &__header img {
     margin-left: auto;
     margin-right: auto;
@@ -200,7 +210,7 @@
       //   background-color: aquamarine;
       position: absolute;
       left: 15px;
-      top: 8px;
+      top: 10px;
       border: solid black;
       border-width: 0 2px 2px 0;
       display: inline-block;
@@ -210,7 +220,9 @@
   }
 
   &__body {
-    border: 3px solid #000;
+    box-shadow: 0px 0px 5px 5px #f0f0f0;
+    border-radius: 12px;
+    padding: 5px;
   }
 
   &__list {
@@ -232,7 +244,6 @@
   }
 
   &__diet-labels {
-    border: 3px solid #000;
     gap: 10px;
 
     & li {
@@ -260,7 +271,16 @@
     // align-content: center;
   }
 
-  &__calories {
+  &__main {
+    li {
+      color: #000;
+      background-color: #ff5e00;
+      border-radius: 8px;
+      padding: 5px;
+    }
+    span {
+      padding-right: 5px;
+    }
   }
 
   &__type-tags {
@@ -268,7 +288,18 @@
     border-radius: 8px;
     gap: 10px;
   }
-
+  &__cuisine-type,
+  &__meal-type,
+  &__dish-type {
+    color: rgb(0, 0, 0);
+    background-color: #00e0bb;
+    border-radius: 8px;
+    padding: 5px;
+  }
+  &__meal-type {
+  }
+  &__dish-type {
+  }
   &__total-nutrients {
   }
 }
@@ -288,10 +319,15 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    align-items: center;
-
+    align-items: flex-start;
     &span {
       font-weight: 600;
+    }
+    div {
+      flex: 1 1 100px;
+    }
+    img {
+      flex: 1 3 300px;
     }
   }
 
@@ -319,6 +355,10 @@
     height: auto;
     border-radius: 8px;
   }
+  &__text {
+    word-break: normal;
+    overflow-y: auto;
+  }
 }
 
 .total-nutrients {
@@ -344,6 +384,17 @@
 }
 
 .digest {
+  gap: 10px;
+  align-items: flex-start;
+  &__main {
+    flex-direction: column;
+    align-content: center;
+    background-color: #fff;
+    color: #000;
+    border-radius: 16px;
+    padding: 5px;
+    margin-bottom: 10px;
+  }
   &__item {
     gap: 10px;
     color: #fff;
@@ -353,12 +404,17 @@
   }
   &__sub {
     gap: 10px;
-    li {
-      color: #fff;
-      background-color: #7600b1;
-      border-radius: 8px;
-      padding: 5px;
-    }
-
   }
+}
+
+.sub {
+  gap: 10px;
+  color: #fff;
+  background-color: #7600b1;
+  border-radius: 8px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  text-align: center;
 }

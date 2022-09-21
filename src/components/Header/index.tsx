@@ -10,6 +10,7 @@ export default function Header() {
           <nav className="navigation">
             <ul className="navigation__list">
               <li className="navigation__item"><Link to='/'>Menu</Link></li>
+              <li className="navigation__item"><Link to='my-recipes'>My recipes</Link></li>
               <li className="navigation__item"><Link to='food'>Food</Link></li>
               <li className="navigation__item"><Link to='where'>Where</Link></li>
               <li className="navigation__item"><Link to='service'>Service</Link></li>

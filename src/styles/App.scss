@@ -6,9 +6,15 @@
 @import "./search.scss";
 @import "./loader.scss";
 @import "./procent-circle.scss";
+@import "./my-recipes.scss";
+
 .App {
   display: flex;
   flex-direction: column;
+  &__body {
+    min-height: calc(100vh - 160px);
+    background-color: #ededed;
+  }
 }
 
 .wrapper {

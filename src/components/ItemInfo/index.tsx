@@ -163,15 +163,15 @@ export default function ItemInfo({ info, closeInfoCallback }: ItemInfo) {
         <ul className="item-info__ingredients item-info__list">
           {info.recipe.ingredients.length &&
             info.recipe.ingredients.map((item: any) => (
-              <li key={item} className="ingredient">
-                <article className="ingredient__item">
-                  <div className="ingredient__text">
+              <li key={item} className="item-info__ingredient">
+                <article className="item-info__ingredient__item">
+                  <div className="item-info__ingredient__text">
                     Ingredient: <span>{item.text}</span>
                   </div>
                   {/* <div className="ingredient__quantity">Quantity: <span>{item.quantity}</span></div>
                   <div className="ingredient__measure">Measure: <span>{item.measure}</span></div>
                   <div className="ingredient__food">Food: <span>{item.food}</span></div> */}
-                  <div className="ingredient__weight">
+                  <div className="item-info__ingredient__weight">
                     Weight: <span>{roundNumber(item.weight, 1)}</span>
                   </div>
                   {/* <div className="ingredient__food-category">
@@ -180,7 +180,7 @@ export default function ItemInfo({ info, closeInfoCallback }: ItemInfo) {
                   <img
                     src={item.image}
                     alt={item.text}
-                    className="ingredient__image"
+                    className="item-info__ingredient__image"
                   />
                 </article>
               </li>

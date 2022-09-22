@@ -4,7 +4,7 @@ import ReceiptCard from "../../components/ReceiptCard"
 
 export default function MyRecipes() {
   return (
-    <div className="my-recipes">
+    <div className="my-recipes wrapper">
       <h1>MyRecipes</h1>
       <div className="my-recipes__body">
         <div className='my-recipes__create-receipt'><CreateReceipt /></div>

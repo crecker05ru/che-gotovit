@@ -19,9 +19,9 @@ interface UseInput {
 interface Ingredient {
   title: string
   image: string
-  quantity: number
-  measure: number
-  weight: number
+  quantity: string
+  measure: string
+  weight: string
 }
 interface UseInputIngredient {
   title: UseInput
@@ -42,9 +42,9 @@ export default function СreateReceipt() {
   const currentIngredient: Ingredient = {
     title: "",
     image: "",
-    quantity: 0,
-    measure: 0,
-    weight: 0,
+    quantity: '',
+    measure: '',
+    weight: '',
   }
   const title = useInput("")
   const image = useInput("")
@@ -57,8 +57,9 @@ export default function СreateReceipt() {
   // const ingredientWeight = useInput()
   const ingredientQuantity = useInput()
   const ingredientMeasure = useInput()
+  const ingredientWeight = useInput()
   const step: any = useInput("")
-  const [steps, setSteps] = useState<string[]>([""])
+  const [steps, setSteps] = useState<string[]>([])
   const [receipt, setReceipt] = useState({})
 
   const addStep = () => {
@@ -66,21 +67,17 @@ export default function СreateReceipt() {
     console.log("steps", steps)
   }
 
-  const createIngredient = () => {
+  const addIngredient = () => {
     let ingredient: Ingredient = {
       title: ingredientTitle.value as string,
       image: ingredientImage.value as string,
-      quantity: ingredientQuantity.value as number,
-      measure: ingredientMeasure.value as number,
-      weight: roundNumber(
-        Number(ingredientQuantity) * Number(ingredientMeasure),
-        1
-      ),
+      quantity: ingredientQuantity.value as string,
+      measure: ingredientMeasure.value as string,
+      weight: ingredientWeight.value as string
     }
-    setIngredient(ingredient)
+    setIngredients(ingredients.concat([ingredient]))
+    console.log('ingredients',ingredients)
   }
-
-  const addIngredient = () => setIngredients(ingredients.concat([ingredient]))
   const createReceipt = () =>
     setReceipt({
       title: title.value,
@@ -94,6 +91,7 @@ export default function СreateReceipt() {
     <div className="create-receipt">
       <h2 className="create-receipt__header">Сreate receipt</h2>
       <div className="create-receipt__body">
+        <h4>Receipt description</h4>
         <div className="create-receipt__body-title">
           <input {...title} placeholder="Title" />
         </div>
@@ -107,12 +105,14 @@ export default function СreateReceipt() {
           <input {...totalTime} placeholder="Total time" type="number" />
         </div>
         <div className="create-receipt__body-create-ingredients">
-          <input {...ingredientTitle} placeholder="Title" />
-          <input {...ingredientImage} placeholder="Image URL" />
+        <h4>Ingredient description</h4>
+        <button onClick={addIngredient}>+ Ingredient</button>
+          <input {...ingredientTitle} placeholder="Title" type="text"/>
+          <input {...ingredientImage} placeholder="Image URL" type="text" />
           <input {...ingredientQuantity} placeholder="Quantity" type="number" />
-          <input {...ingredientMeasure} placeholder="Measure" type="number" />
-          <span>Weight: {ingredient.weight}</span>
-          <ul className="create-ingredients">
+          <input {...ingredientMeasure} placeholder="Measure" type="text" />
+          <input {...ingredientWeight} placeholder="Weight" type="number" />
+          <ul className="create-ingredients row">
             {ingredients.length > 0 &&
               ingredients.map((ingredient) => (
                 <li className="create-ingredient" key={ingredient.title}>
@@ -126,11 +126,14 @@ export default function СreateReceipt() {
                 </li>
               ))}
           </ul>
-          <button onClick={addIngredient}>+ Ingredient</button>
+          
         </div>
         <div className="create-receipt__body-steps">
+        <button onClick={addStep}>+ Step</button>
+          <div className="create-receipt__body-steps-input">
           <textarea {...step} placeholder="Steps"></textarea>
-          <ul className="steps">
+          </div>
+          <ul className="steps row">
             {steps.length > 0 &&
               steps.map((step) => (
                 <li className="step" key={step}>
@@ -138,9 +141,8 @@ export default function СreateReceipt() {
                 </li>
               ))}
           </ul>
-          <button onClick={addStep}>+ Step</button>
         </div>
-        <button onClick={createReceipt}>Create</button>
+        <button onClick={createReceipt}>Create receipt</button>
       </div>
     </div>
   )

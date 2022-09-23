@@ -13,6 +13,9 @@
     padding: 10px;
     border-radius: 16px;
   }
+  &__receipts-item {
+    width: 50%;
+  }
 }
 .create-ingredient {
   flex: 1 0 400px;

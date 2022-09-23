@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { setConstantValue } from "typescript"
 import { roundNumber } from "../../helpers/roundNumber"
+import { useActions } from "../../hooks/useActions"
 import useInput from "../../hooks/useInput"
 import Ingredient from "../Ingredient"
 
@@ -61,6 +62,7 @@ export default function СreateReceipt() {
   const step: any = useInput("")
   const [steps, setSteps] = useState<string[]>([])
   const [receipt, setReceipt] = useState({})
+  const {addMyRecipe} = useActions()
 
   const addStep = () => {
     setSteps(steps.concat([step.value]))
@@ -78,15 +80,19 @@ export default function СreateReceipt() {
     setIngredients(ingredients.concat([ingredient]))
     console.log('ingredients',ingredients)
   }
-  const createReceipt = () =>
-    setReceipt({
+  const createReceipt = () => {
+    let item = {
       title: title.value,
       image: image.value,
       weight: weight.value,
       totalTime: totalTime.value,
       ingredients,
       steps,
-    })
+    }
+    setReceipt(item)
+    addMyRecipe(item)
+  }
+    
   return (
     <div className="create-receipt">
       <h2 className="create-receipt__header">Сreate receipt</h2>

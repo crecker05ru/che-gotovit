@@ -1,0 +1,30 @@
+.receipt-card {
+    &__body {
+        background-color: #fff;
+        box-shadow: 0px 0px 8px 3px rgb(209, 209, 209);
+        padding: 10px;
+        border-radius: 16px;
+      }
+
+      &__ingredients {
+        flex: 1 0 400px;
+        margin: 5px;
+        border: 2px solid #000;
+        border-radius: 8px;
+        padding: 5px;
+        @media (min-width: 320px) {
+          max-width: calc(100% - 10px);
+          flex: 1 0 250px;
+        }
+      
+        @media (min-width: 700px) {
+          max-width: calc(50% - 10px);
+          // flex: 1 0 300px;
+        }
+      
+        @media (min-width: 1023px) {
+          max-width: calc(33.3333% - 10px);
+          flex: 1 0 400px;
+        }
+      }
+}

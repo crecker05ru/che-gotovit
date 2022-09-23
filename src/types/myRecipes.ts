@@ -5,8 +5,8 @@ export interface MyRecipe {
   totalTime: number
   quantity: string
   measure: string
-  ingredients: [Ingredient]
-  steps: [string]
+  ingredients: Ingredient[]
+  steps: string[]
 }
 export interface Ingredient {
   title: string
@@ -14,6 +14,7 @@ export interface Ingredient {
   quantity: string
   measure: string
   weight: string
+  text?: string
 }
 
 export interface Ingredients {

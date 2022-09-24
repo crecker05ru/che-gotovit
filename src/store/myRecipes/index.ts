@@ -39,14 +39,20 @@ export const fetchMyRecipes = createAsyncThunk(
     initialState,
     reducers: {
       setMyRecipes: (state) => {
+        if(localStorage.getItem('myRecipes') == null){
+            localStorage.setItem('myRecipes', JSON.stringify(state.myRecipes))
+        }
         let myRecipes = localStorage.getItem('myRecipes')
         console.log('myRecipes', myRecipes)
-        state.myRecipes.push()
+        console.log((JSON.parse( myRecipes as string)))
+        let parsedMyRecipe = JSON.parse( myRecipes as string)
+        state.myRecipes.push(...parsedMyRecipe)
+        console.log('state.myRecipes', state.myRecipes)
         
       },
       addMyRecipe: (state, action) => {
         state.myRecipes.push(action.payload)
-        localStorage.setItem('myRecipes', JSON.stringify(action.payload))
+        localStorage.setItem('myRecipes', JSON.stringify(state.myRecipes))
       },
       deleteMyRecipe: (state, action) => {
         state.myRecipes = state.myRecipes.filter( recipe => recipe.title !== action.payload)

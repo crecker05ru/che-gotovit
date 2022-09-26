@@ -39,7 +39,7 @@ interface IngredientState {
 interface Ingredients {
   [index: number]: Ingredient
 }
-export default function СreateReceipt() {
+export default function СreateRecipe() {
   const currentIngredient: Ingredient = {
     title: "",
     image: "",
@@ -61,7 +61,7 @@ export default function СreateReceipt() {
   const ingredientWeight = useInput()
   const step: any = useInput("")
   const [steps, setSteps] = useState<string[]>([])
-  const [receipt, setReceipt] = useState({})
+  const [recipe, setRecipe] = useState({})
   const {addMyRecipe, setMyRecipes} = useActions()
 
   const addStep = () => {
@@ -80,7 +80,7 @@ export default function СreateReceipt() {
     setIngredients(ingredients.concat([ingredient]))
     console.log('ingredients',ingredients)
   }
-  const createReceipt = () => {
+  const createRecipe = () => {
     let item = {
       title: title.value,
       image: image.value,
@@ -89,7 +89,7 @@ export default function СreateReceipt() {
       ingredients,
       steps,
     }
-    setReceipt(item)
+    setRecipe(item)
     addMyRecipe(item)
   }
     
@@ -97,23 +97,23 @@ export default function СreateReceipt() {
     setMyRecipes()
   },[])
   return (
-    <div className="create-receipt">
-      <h2 className="create-receipt__header">Сreate receipt</h2>
-      <div className="create-receipt__body">
-        <h4>Receipt description</h4>
-        <div className="create-receipt__body-title">
+    <div className="create-recipe">
+      <h2 className="create-recipe__header">Сreate recipe</h2>
+      <div className="create-recipe__body">
+        <h4>Recipe description</h4>
+        <div className="create-recipe__body-title">
           <input {...title} placeholder="Title" />
         </div>
-        <div className="create-receipt__body-image">
+        <div className="create-recipe__body-image">
           <input {...image} placeholder="Image URL" />
         </div>
-        <div className="create-receipt__body-weight">
+        <div className="create-recipe__body-weight">
           <input {...weight} placeholder="Weight" type="number" />
         </div>
-        <div className="create-receipt__body-total-time">
+        <div className="create-recipe__body-total-time">
           <input {...totalTime} placeholder="Total time" type="number" />
         </div>
-        <div className="create-receipt__body-create-ingredients">
+        <div className="create-recipe__body-create-ingredients">
         <h4>Ingredient description</h4>
         <button onClick={addIngredient}>+ Ingredient</button>
           <input {...ingredientTitle} placeholder="Title" type="text"/>
@@ -137,9 +137,9 @@ export default function СreateReceipt() {
           </ul>
           
         </div>
-        <div className="create-receipt__body-steps">
+        <div className="create-recipe__body-steps">
         <button onClick={addStep}>+ Step</button>
-          <div className="create-receipt__body-steps-input">
+          <div className="create-recipe__body-steps-input">
           <textarea {...step} placeholder="Steps"></textarea>
           </div>
           <ul className="steps row">
@@ -151,7 +151,7 @@ export default function СreateReceipt() {
               ))}
           </ul>
         </div>
-        <button onClick={createReceipt}>Create receipt</button>
+        <button onClick={createRecipe}>Create recipe</button>
       </div>
     </div>
   )

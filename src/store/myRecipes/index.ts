@@ -2,6 +2,7 @@ import {MyRecipe} from '../../types/myRecipes'
 import { http } from './../../api/http';
 import { createSlice,createAsyncThunk,PayloadAction } from  '@reduxjs/toolkit'
 
+
 export interface MyRecipesState {
     myRecipes: MyRecipe[]
     status: 'idle' | 'loading' | 'failed'
@@ -21,6 +22,13 @@ const example = {
     weight: '25'
   }],
   steps: ['make dough','make a shape','bake 25 minutes']
+}
+
+const  updateMyRecipesState =  (state: any) => {
+  localStorage.setItem('myRecipes', JSON.stringify(state.myRecipes))
+  let myRecipes = localStorage.getItem('myRecipes')
+  let parsedMyRecipe = JSON.parse( myRecipes as string)
+  state.myRecipes = parsedMyRecipe
 }
 const initialState: MyRecipesState =  {
     myRecipes: [example],
@@ -46,20 +54,23 @@ export const fetchMyRecipes = createAsyncThunk(
         console.log('myRecipes', myRecipes)
         console.log((JSON.parse( myRecipes as string)))
         let parsedMyRecipe = JSON.parse( myRecipes as string)
-        state.myRecipes.push(...parsedMyRecipe)
+        // state.myRecipes.push(...parsedMyRecipe)
+        state.myRecipes = parsedMyRecipe
         console.log('state.myRecipes', state.myRecipes)
         
       },
       addMyRecipe: (state, action) => {
         state.myRecipes.push(action.payload)
-        localStorage.setItem('myRecipes', JSON.stringify(state.myRecipes))
+        // localStorage.setItem('myRecipes', JSON.stringify(state.myRecipes))
+        updateMyRecipesState(state)
       },
       deleteMyRecipe: (state, action) => {
         state.myRecipes = state.myRecipes.filter( recipe => recipe.title !== action.payload)
+        updateMyRecipesState(state)
       },
       editMyRecipe: (state,action) => {
         state.myRecipes = state.myRecipes.map(recipe => recipe.title === action.payload.title ? {...recipe, ...action.payload} : recipe) 
-
+        updateMyRecipesState(state)
       }
     },
     extraReducers : (builder) => {

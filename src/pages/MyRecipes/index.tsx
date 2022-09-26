@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import CreateReceipt from "../../components/CreateReceipt";
-import ReceiptCard from "../../components/ReceiptCard";
+import СreateRecipe from "../../components/CreateRecipe";
+import RecipeCard from "../../components/RecipeCard";
 import { useActions } from "../../hooks/useActions";
 import { RootState } from "../../store/store";
 
@@ -16,15 +16,15 @@ export default function MyRecipes() {
     <div className="my-recipes wrapper">
       <h1>MyRecipes</h1>
       <div className="my-recipes__body">
-        <div className="my-recipes__create-receipt">
-          <CreateReceipt />
+        <div className="my-recipes__create-recipe">
+          <СreateRecipe />
         </div>
-        <div className="my-recipes__receipts">
-          <ul className="my-recipes__receipts-lists row">
+        <div className="my-recipes__recipe">
+          <ul className="my-recipes__recipe-lists row gap-10">
             {myRecipes.length > 0 &&
               myRecipes.map((myRecipe) => (
-                <li className="my-recipes__receipts-item" key={myRecipe.title}>
-                  <ReceiptCard {...myRecipe}/>
+                <li className="my-recipes__recipe-item" key={myRecipe.title}>
+                  <RecipeCard {...myRecipe}/>
                 </li>
               ))}
           </ul>

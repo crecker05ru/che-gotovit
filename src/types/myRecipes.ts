@@ -7,6 +7,7 @@ export interface MyRecipe {
   measure: string
   ingredients: Ingredient[]
   steps: string[]
+  recipeId?: number
 }
 export interface Ingredient {
   title: string

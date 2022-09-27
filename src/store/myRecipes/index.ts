@@ -71,6 +71,13 @@ export const fetchMyRecipes = createAsyncThunk(
       editMyRecipe: (state,action) => {
         state.myRecipes = state.myRecipes.map(recipe => recipe.title === action.payload.title ? {...recipe, ...action.payload} : recipe) 
         updateMyRecipesState(state)
+      },
+      updateIngredient: (state, action) => {
+        state.myRecipes = state.myRecipes.map((recipe, index) => {
+          let {id,text,...payload} = action.payload
+          return index === id 
+        ? {...recipe,ingredients: {...recipe.ingredients,...payload}} : recipe}) 
+        updateMyRecipesState(state)
       }
     },
     extraReducers : (builder) => {
@@ -86,27 +93,6 @@ export const fetchMyRecipes = createAsyncThunk(
         })
     }
   })
-// export const recipesSlice = createSlice({
-//     name: 'recipes',
-//     initialState,
-//     reducers: {
-//         setRecipes: (state, action) => {
-//             state.recipes = action.payload
-//         },
-//     },
-//     extraReducers: (builder) => {
-//         builder.addCase(fetchRecipes.pending, (state) => {
-//             state.status = 'loading'
-//         })
-//         .addCase(fetchRecipes.fulfilled, (state, action) => {
-//             state.status = 'idle'
-//             state.recipes = action.payload
-//         })
-//         .addCase(fetchRecipes.rejected, (state) => {
-//             state.status = 'failed'
-//         })
-//     }
-// })
 
-export const { setMyRecipes,addMyRecipe, editMyRecipe, deleteMyRecipe } = myRecipesSlice.actions
+export const { setMyRecipes,addMyRecipe, editMyRecipe, deleteMyRecipe, updateIngredient } = myRecipesSlice.actions
 export default myRecipesSlice.reducer

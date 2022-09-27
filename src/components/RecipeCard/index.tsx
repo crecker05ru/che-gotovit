@@ -14,6 +14,7 @@ export default function RecipeCard({
   steps,
   quantity,
   measure,
+  recipeId
 }: MyRecipe) {
   const [isEdit, setIsEdit] = useState(false)
   const editTitle = useInput(title)
@@ -44,6 +45,11 @@ export default function RecipeCard({
     console.log('item',item)
     console.log('editedRecipe',editedRecipe)
     console.log('editImage.value',editImage.value)
+  }
+  const updateIngredient = (id: number,ingredient: any) => {
+    let newIngredients = ingredients.map((item, index) => index === id ? item = ingredient : item)
+    setEditIngredients(newIngredients)
+    // ingredients[index] = ingredient
   }
   return (
     <div className="recipe-card">
@@ -91,9 +97,10 @@ export default function RecipeCard({
         </div>
         <ul className="recipe-card__ingredients">
           {ingredients.length > 0 &&
-            ingredients.map((ingredient) => (
+            ingredients.map((ingredient,index) => (
               <li className="recipe-card__ingredient" key={ingredient.title}>
-                <Ingredient {...ingredient} />
+                <Ingredient {...ingredient} id={index} recipeId={recipeId} isEdit={isEdit} updateIngredient={updateIngredient}
+                 />
               </li>
             ))}
         </ul>

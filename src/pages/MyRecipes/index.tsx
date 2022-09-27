@@ -22,9 +22,9 @@ export default function MyRecipes() {
         <div className="my-recipes__recipe">
           <ul className="my-recipes__recipe-lists row gap-10">
             {myRecipes.length > 0 &&
-              myRecipes.map((myRecipe) => (
+              myRecipes.map((myRecipe, index) => (
                 <li className="my-recipes__recipe-item" key={myRecipe.title}>
-                  <RecipeCard {...myRecipe}/>
+                  <RecipeCard {...myRecipe} recipeId={index}/>
                 </li>
               ))}
           </ul>

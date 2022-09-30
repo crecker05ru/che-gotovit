@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react"
 import { setConstantValue } from "typescript"
-import { roundNumber } from "../../helpers/roundNumber"
-import { useActions } from "../../hooks/useActions"
-import useInput from "../../hooks/useInput"
-import Ingredient from "../Ingredient"
+import { roundNumber } from "../../../helpers/roundNumber"
+import { useActions } from "../../../hooks/useActions"
+import useInput from "../../../hooks/useInput"
+import Ingredient from "../Ingredients/Ingredient"
 
 type Dispatch<A> = (value: A) => void
 type SetStateAction<S> = S | ((prevState: S) => S)
@@ -43,9 +43,9 @@ export default function СreateRecipe() {
   const currentIngredient: Ingredient = {
     title: "",
     image: "",
-    quantity: '',
-    measure: '',
-    weight: '',
+    quantity: "",
+    measure: "",
+    weight: "",
   }
   const title = useInput("")
   const image = useInput("")
@@ -62,7 +62,7 @@ export default function СreateRecipe() {
   const step: any = useInput("")
   const [steps, setSteps] = useState<string[]>([])
   const [recipe, setRecipe] = useState({})
-  const {addMyRecipe, setMyRecipes} = useActions()
+  const { addMyRecipe, setMyRecipes } = useActions()
 
   const addStep = () => {
     setSteps(steps.concat([step.value]))
@@ -75,10 +75,10 @@ export default function СreateRecipe() {
       image: ingredientImage.value as string,
       quantity: ingredientQuantity.value as string,
       measure: ingredientMeasure.value as string,
-      weight: ingredientWeight.value as string
+      weight: ingredientWeight.value as string,
     }
     setIngredients(ingredients.concat([ingredient]))
-    console.log('ingredients',ingredients)
+    console.log("ingredients", ingredients)
   }
   const createRecipe = () => {
     let item = {
@@ -92,10 +92,10 @@ export default function СreateRecipe() {
     setRecipe(item)
     addMyRecipe(item)
   }
-    
+
   useEffect(() => {
     setMyRecipes()
-  },[])
+  }, [])
   return (
     <div className="create-recipe">
       <h2 className="create-recipe__header">Сreate recipe</h2>
@@ -114,33 +114,18 @@ export default function СreateRecipe() {
           <input {...totalTime} placeholder="Total time" type="number" />
         </div>
         <div className="create-recipe__body-create-ingredients">
-        <h4>Ingredient description</h4>
-        <button onClick={addIngredient}>+ Ingredient</button>
-          <input {...ingredientTitle} placeholder="Title" type="text"/>
+          <h4>Ingredient description</h4>
+          <button onClick={addIngredient}>+ Ingredient</button>
+          <input {...ingredientTitle} placeholder="Title" type="text" />
           <input {...ingredientImage} placeholder="Image URL" type="text" />
           <input {...ingredientQuantity} placeholder="Quantity" type="number" />
           <input {...ingredientMeasure} placeholder="Measure" type="text" />
           <input {...ingredientWeight} placeholder="Weight" type="number" />
-          <ul className="create-ingredients row">
-            {ingredients.length > 0 &&
-              ingredients.map((ingredient) => (
-                <li className="create-ingredient" key={ingredient.title}>
-                  <Ingredient
-                    title={ingredient.title}
-                    image={ingredient.image}
-                    weight={ingredient.weight}
-                    quantity={ingredient.quantity}
-                    measure={ingredient.measure}
-                  />
-                </li>
-              ))}
-          </ul>
-          
         </div>
         <div className="create-recipe__body-steps">
-        <button onClick={addStep}>+ Step</button>
+          <button onClick={addStep}>+ Step</button>
           <div className="create-recipe__body-steps-input">
-          <textarea {...step} placeholder="Steps"></textarea>
+            <textarea {...step} placeholder="Steps"></textarea>
           </div>
           <ul className="steps row">
             {steps.length > 0 &&

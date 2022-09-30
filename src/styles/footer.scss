@@ -1,4 +1,11 @@
 .footer {
-    background-color: rgb(75, 141, 119);
-    min-height: 80px;
+  background-color: rgb(75, 141, 119);
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  &__title {
+    text-align: center;
+    color: #fff;
+  }
 }

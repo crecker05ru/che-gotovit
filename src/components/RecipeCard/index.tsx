@@ -1,9 +1,12 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useActions } from "../../hooks/useActions"
 import useInput from "../../hooks/useInput"
+import Steps from "./Steps"
 import { MyRecipe } from "../../types/myRecipes"
 import { EditableDIV } from "../EditableDIV"
-import Ingredient from "../Ingredient"
+import Ingredient from "./Ingredients/Ingredient"
+import Step from "./Steps/Step"
+import Ingredients from "./Ingredients"
 
 export default function RecipeCard({
   title,
@@ -14,7 +17,7 @@ export default function RecipeCard({
   steps,
   quantity,
   measure,
-  recipeId
+  recipeId,
 }: MyRecipe) {
   const [isEdit, setIsEdit] = useState(false)
   const editTitle = useInput(title)
@@ -23,34 +26,58 @@ export default function RecipeCard({
   const editWeight = useInput(weight)
   const editTotalTime = useInput(totalTime)
   const [editSteps, setEditSteps] = useState(steps)
+  // const editStep = useInput()
   const editQuantity = useInput(quantity)
   const editMeasure = useInput(measure)
   const [editedRecipe, setEditedRecipe] = useState({})
   const { editMyRecipe } = useActions()
+
+  // const updateSteps = (id: number, step: string) => {
+  //   // let newSteps = steps.map((item, index) => index === id ? item = step : item)
+  //   // let newSteps = editSteps.map((item, index) => index === id ? item = step : item)
+  //   let copyArr = [...editSteps]
+  //   copyArr[id] = step
+  //   if(isEdit){
+  //     setEditSteps(copyArr)
+  //   }
+
+  //   // setEditSteps(newSteps)
+  //   // if(isEdit === false) {
+  //   //   let newSteps = steps.map((item, index) => index === id ? item = step : item)
+  //   //   setEditSteps(newSteps)
+  //   // }
+  // }
+  const setSteps = (steps: any) => {
+    setEditSteps(steps)
+  }
+  const setIngredients = (ingredients: any) => {
+    setEditIngredients(ingredients)
+  }
   const editModeHandler = () => {
     setIsEdit(true)
   }
   const editRecipeHandler = () => {
-    let item = {
-      title,
-      image: editImage.value,
-      weight: editWeight.value,
-      totalTime: editTotalTime.value,
-      ingredients: editIngredients,
-      steps: editSteps
-    }
-    setEditedRecipe(item)
-    editMyRecipe(item)
-    setIsEdit(false)
-    console.log('item',item)
-    console.log('editedRecipe',editedRecipe)
-    console.log('editImage.value',editImage.value)
+    setTimeout(() => {
+      let item = {
+        title,
+        image: editImage.value,
+        weight: editWeight.value,
+        totalTime: editTotalTime.value,
+        ingredients: editIngredients,
+        steps: editSteps,
+      }
+      setEditedRecipe(item)
+      editMyRecipe(item)
+      setIsEdit(false)
+      console.log("item", item)
+      console.log("editedRecipe", editedRecipe)
+      console.log("editImage.value", editImage.value)
+    }, 0)
   }
-  const updateIngredient = (id: number,ingredient: any) => {
-    let newIngredients = ingredients.map((item, index) => index === id ? item = ingredient : item)
-    setEditIngredients(newIngredients)
-    // ingredients[index] = ingredient
-  }
+
+  useEffect(() => {
+    console.log("ReceipeCard component")
+  }, [])
   return (
     <div className="recipe-card">
       <div className="recipe-card__body">
@@ -71,7 +98,7 @@ export default function RecipeCard({
         <div className="recipe-card__image">
           {isEdit ? (
             // <EditableDIV className="edit-recipe__image edit" {...editImage} />
-            <input className="edit-recipe__image edit" {...editImage}/>
+            <input className="edit-recipe__image edit" {...editImage} />
           ) : (
             <img src={image} alt={title} className="recipe-card__image"></img>
           )}
@@ -79,7 +106,7 @@ export default function RecipeCard({
         <div className="recipe-card__weight">
           {isEdit ? (
             // <EditableDIV className="edit-recipe__weight edit" {...editWeight} />
-            <input className="edit-recipe__weight edit" {...editWeight}/>
+            <input className="edit-recipe__weight edit" {...editWeight} />
           ) : (
             <span>Weight: {weight}</span>
           )}
@@ -90,12 +117,16 @@ export default function RecipeCard({
             //   className="edit-recipe__total-time edit"
             //   {...editTotalTime}
             // />
-            <input className="edit-recipe__total-time edit" {...editTotalTime}/>
+            <input
+              className="edit-recipe__total-time edit"
+              {...editTotalTime}
+            />
           ) : (
             <span>Total time: {totalTime}</span>
           )}
         </div>
-        <ul className="recipe-card__ingredients">
+        <h4>Ingredients:</h4>
+        {/* <ul className="recipe-card__ingredients">
           {ingredients.length > 0 &&
             ingredients.map((ingredient,index) => (
               <li className="recipe-card__ingredient" key={ingredient.title}>
@@ -103,15 +134,14 @@ export default function RecipeCard({
                  />
               </li>
             ))}
-        </ul>
-        <ul className="recipe-card__steps">
-          {steps.length > 0 &&
-            steps.map((step) => (
-              <li className="recipe-card__step" key={step}>
-                {step}
-              </li>
-            ))}
-        </ul>
+        </ul> */}
+        <Ingredients
+          ingredients={ingredients}
+          isEdit={isEdit}
+          setIngredients={setIngredients}
+        />
+        <h4>Steps:</h4>
+        <Steps steps={steps} isEdit={isEdit} setSteps={setSteps} />
       </div>
     </div>
   )

@@ -10,8 +10,6 @@
   &__ingredients {
     flex: 1 0 400px;
     margin: 5px;
-    border: 2px solid #000;
-    border-radius: 8px;
     padding: 5px;
     @media (min-width: 320px) {
       max-width: calc(100% - 10px);
@@ -27,6 +25,11 @@
       max-width: calc(33.3333% - 10px);
       flex: 1 0 400px;
     }
+  }
+  &__ingredient {
+    border: 2px solid #000;
+    border-radius: 8px;
+    margin-bottom: 10px;
   }
   &__image {
     max-width: 250px;

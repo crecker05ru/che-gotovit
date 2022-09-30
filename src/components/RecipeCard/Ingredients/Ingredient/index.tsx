@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
-import { roundNumber } from "../../helpers/roundNumber"
-import { useActions } from "../../hooks/useActions"
-import useInput from "../../hooks/useInput"
+import { roundNumber } from "../../../../helpers/roundNumber"
+import { useActions } from "../../../../hooks/useActions"
+import useInput from "../../../../hooks/useInput"
 
 export default function Ingredient({
   title = "",
@@ -12,7 +12,7 @@ export default function Ingredient({
   measure = "",
   id,
   isEdit,
-  updateIngredient
+  updateIngredient,
 }: any) {
   // const [isEdit, setIsEdit] = useState(false)
   // const editTitle = useInput(title)
@@ -34,24 +34,30 @@ export default function Ingredient({
       weight: editWeight.value,
       image: editImage.value,
       quantity: editQuantity.value,
-      measure: editMeasure.value
+      measure: editMeasure.value,
     }
     // setIsEdit(false)
     // updateIngredient(item)
-    updateIngredient(id,item)
+    updateIngredient(id, item)
   }
-useEffect(() => {
-  let item = {
-    id,
-    title,
-    text: editText.value,
-    weight: editWeight.value,
-    image: editImage.value,
-    quantity: editQuantity.value,
-    measure: editMeasure.value
-  }
-  updateIngredient(id,item)
-},[editText.value,editWeight.value,editImage.value,editQuantity.value,editMeasure.value])
+  useEffect(() => {
+    let item = {
+      id,
+      title,
+      text: editText.value,
+      weight: editWeight.value,
+      image: editImage.value,
+      quantity: editQuantity.value,
+      measure: editMeasure.value,
+    }
+    updateIngredient(id, item)
+  }, [
+    editText.value,
+    editWeight.value,
+    editImage.value,
+    editQuantity.value,
+    editMeasure.value,
+  ])
   return (
     <div className="ingredient">
       <article className="ingredient__item">
@@ -65,20 +71,33 @@ useEffect(() => {
           </div> */}
         <div className="ingredient__quantity">
           Quantity:{" "}
-          {isEdit ? <input className="edit-ingredient" {...editQuantity} /> : <span>{quantity}</span>}
+          {isEdit ? (
+            <input className="edit-ingredient" {...editQuantity} />
+          ) : (
+            <span>{quantity}</span>
+          )}
         </div>
         <div className="ingredient__measure">
           Measure:{" "}
-          {isEdit ? <input className="edit-ingredient" {...editMeasure} /> : <span>{measure}</span>}
+          {isEdit ? (
+            <input className="edit-ingredient" {...editMeasure} />
+          ) : (
+            <span>{measure}</span>
+          )}
         </div>
         {/* <div className="ingredient__food">Food: <span>{food}</span></div> */}
         <div className="ingredient__weight">
-          Weight: {isEdit ? <input className="edit-ingredient" {...editWeight} /> : <span>{weight}</span>}
+          Weight:{" "}
+          {isEdit ? (
+            <input className="edit-ingredient" {...editWeight} />
+          ) : (
+            <span>{weight}</span>
+          )}
         </div>
         {/* <div className="ingredient__food-category">
             Food category: <span>{item.foodCategory}</span>
             </div> */}
-        <div >
+        <div>
           {isEdit ? (
             <input className="edit-ingredient" {...editImage} />
           ) : (

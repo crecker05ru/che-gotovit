@@ -23,7 +23,7 @@ export default function Steps({ steps, isEdit, setSteps }: any) {
     <ul className="recipe-card__steps">
       {steps.length > 0 &&
         steps.map((step: string, index: number) => (
-          <li className="recipe-card__step" key={step}>
+          <li className="recipe-card__step" key={index}>
             {isEdit ? (
               <Step value={step} id={index} updateSteps={updateSteps} />
             ) : (

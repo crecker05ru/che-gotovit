@@ -13,6 +13,7 @@ import JobsPage from "./pages/Job"
 import ContactsPage from "./pages/Contacts"
 import AboutUsPage from "./pages/AboutUs"
 import MyRecipes from "./pages/MyRecipes"
+import MyFavorites from "./pages/MyFavorites"
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             />
           </Route>
           <Route path="my-recipes" element={<MyRecipes />} />
+          <Route path="my-favorites" element={<MyFavorites />} />
           <Route path="food" element={<FoodPage />} />
           <Route path="where" element={<WherePage />} />
           <Route path="service" element={<ServicePage />} />

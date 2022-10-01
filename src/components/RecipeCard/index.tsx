@@ -69,14 +69,14 @@ export default function RecipeCard({
       setEditedRecipe(item)
       editMyRecipe(item)
       setIsEdit(false)
-      console.log("item", item)
-      console.log("editedRecipe", editedRecipe)
-      console.log("editImage.value", editImage.value)
+      // console.log("item", item)
+      // console.log("editedRecipe", editedRecipe)
+      // console.log("editImage.value", editImage.value)
     }, 0)
   }
 
   useEffect(() => {
-    console.log("ReceipeCard component")
+    // console.log("ReceipeCard component")
   }, [])
   return (
     <div className="recipe-card">

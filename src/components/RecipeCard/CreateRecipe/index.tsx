@@ -3,6 +3,7 @@ import { setConstantValue } from "typescript"
 import { roundNumber } from "../../../helpers/roundNumber"
 import { useActions } from "../../../hooks/useActions"
 import useInput from "../../../hooks/useInput"
+import Ingredients from "../Ingredients"
 import Ingredient from "../Ingredients/Ingredient"
 
 type Dispatch<A> = (value: A) => void
@@ -66,7 +67,7 @@ export default function СreateRecipe() {
 
   const addStep = () => {
     setSteps(steps.concat([step.value]))
-    console.log("steps", steps)
+    // console.log("steps", steps)
   }
 
   const addIngredient = () => {
@@ -122,6 +123,12 @@ export default function СreateRecipe() {
           <input {...ingredientMeasure} placeholder="Measure" type="text" />
           <input {...ingredientWeight} placeholder="Weight" type="number" />
         </div>
+        <section>
+          <Ingredients ingredients={ingredients}/>
+          <ul>
+            {}
+          </ul>
+        </section>
         <div className="create-recipe__body-steps">
           <button onClick={addStep}>+ Step</button>
           <div className="create-recipe__body-steps-input">
@@ -130,7 +137,7 @@ export default function СreateRecipe() {
           <ul className="steps row">
             {steps.length > 0 &&
               steps.map((step, index) => (
-                <li className="step" key={step}>
+                <li className="step" key={index}>
                   {step}
                 </li>
               ))}

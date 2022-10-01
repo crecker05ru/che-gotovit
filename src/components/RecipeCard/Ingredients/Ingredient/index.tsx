@@ -42,7 +42,7 @@ export default function Ingredient({
   }
   useEffect(() => {
     let item = {
-      id,
+      // id,
       title,
       text: editText.value,
       weight: editWeight.value,

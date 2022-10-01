@@ -89,7 +89,18 @@
     background-size: cover;
     background-position: 0 0;
   }
-
+  &__favorite-icon {
+    margin-left: auto;
+    width: 20px;
+    height: 20px;
+    background-size: cover;
+    background-position: 0 0;
+    cursor: pointer;
+    svg {
+      // fill: rgb(185, 110, 11);
+      // stroke: rgb(227, 20, 20);
+    }
+  }
   &__nutrient-item {
     flex: 1 1 auto;
 

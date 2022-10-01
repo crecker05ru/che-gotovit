@@ -1,10 +1,14 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { roundNumber } from "../../helpers/roundNumber"
+import { useActions } from "../../hooks/useActions"
 import FlipCard from "../FlipCard"
 import ProcentCircle from "../ProcentCircle"
+import Favorite from "../Favorite"
 
 export default function Item({ data, openInfoCallback }: any) {
+  const {addToMyFavorites} = useActions()
+  const [isFilled, setIsFilled] = useState(false)
   const [isFlipped, setIsFlipped] = useState(false)
   const navigate = useNavigate()
   console.log("openInfoCallback", openInfoCallback)
@@ -12,7 +16,10 @@ export default function Item({ data, openInfoCallback }: any) {
   const navigateToItem = () => {
     navigate(`item-info/${data.recipe.label}`)
   }
-
+  const addFavorite = () => {
+    setIsFilled(true)
+    addToMyFavorites(data.recipe)
+  }
   return (
     <div className="item">
       <FlipCard isFlipped={isFlipped}>
@@ -35,6 +42,7 @@ export default function Item({ data, openInfoCallback }: any) {
               <div className="item__total-time-value">
                 {data.recipe.totalTime} min
               </div>
+              <div className="item__favorite-icon" onClick={addFavorite}><Favorite fill={isFilled}/></div>
             </div>
             <h4>Nutrition</h4>
             <ul className="item__nutrients row">

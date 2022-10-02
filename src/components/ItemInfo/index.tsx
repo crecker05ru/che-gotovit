@@ -48,7 +48,7 @@ const colorsMap: ColorsMap = {
 }
 
 interface ItemInfo {
-  info: Recipe
+  info: RecipeInfo
   closeInfoCallback: () => void
 }
 
@@ -79,7 +79,7 @@ export default function ItemInfo({ info, closeInfoCallback }: ItemInfo) {
   const { recipes } = useAppSelector((state) => state.recipes)
 
   const totalNutrientsArr = React.useMemo(() => {
-    return Object.entries(info.recipe.totalNutrients).map((item: any) => {
+    return Object.entries(info.totalNutrients).map((item: any) => {
       return (
         <li className="total-nutrients__item">
           <div className="total-nutrients__title">{item[0]}</div>
@@ -89,10 +89,10 @@ export default function ItemInfo({ info, closeInfoCallback }: ItemInfo) {
         </li>
       )
     })
-  }, [info.recipe.totalNutrients])
+  }, [info.totalNutrients])
 
   const totalDailyArr = React.useMemo(() => {
-    return Object.entries(info.recipe.totalDaily).map((item: any) => {
+    return Object.entries(info.totalDaily).map((item: any) => {
       return (
         <li className="total-daily__item">
           <div className="total-daily__title">{item[0]}</div>
@@ -102,10 +102,10 @@ export default function ItemInfo({ info, closeInfoCallback }: ItemInfo) {
         </li>
       )
     })
-  }, [info.recipe.totalDaily])
+  }, [info.totalDaily])
 
   useEffect(() => {
-    console.log("info.recipe.digest", info.recipe.digest)
+    console.log("info.digest", info.digest)
     console.log("totalNutrientsArr", totalNutrientsArr)
   }, [])
   return (
@@ -114,44 +114,44 @@ export default function ItemInfo({ info, closeInfoCallback }: ItemInfo) {
         Back
       </div>
       <div className="item-info__header">
-        <h2 className="item-info__header-title">{info.recipe.label}</h2>
-        <img src={info.recipe.image} alt={info.recipe.label}></img>
+        <h2 className="item-info__header-title">{info.label}</h2>
+        <img src={info.image} alt={info.label}></img>
       </div>
       <div className="item-info__body">
         <h4>Diet labels</h4>
         <ul className="item-info__diet-labels item-info__list">
-          {info.recipe.dietLabels.length &&
-            info.recipe.dietLabels.map((item: string) => (
+          {info.dietLabels.length &&
+            info.dietLabels.map((item: string) => (
               <li key={item}>{item}</li>
             ))}
         </ul>
         <h4>Health labels</h4>
         <ul className="item-info__health-labels item-info__list">
-          {info.recipe.healthLabels.length &&
-            info.recipe.healthLabels.map((item: string) => (
+          {info.healthLabels.length &&
+            info.healthLabels.map((item: string) => (
               <li key={item}>{item}</li>
             ))}
         </ul>
         <h4>Cautions</h4>
         <ul className="item-info__cautions item-info__list">
-          {info.recipe.cautions.length &&
-            info.recipe.cautions.map((item: string) => (
+          {info.cautions.length &&
+            info.cautions.map((item: string) => (
               <li key={item}>{item}</li>
             ))}
         </ul>
         <h4>Cuisine type</h4>
         <div className="item-info__type-tags row">
           <ul className="item-info__cuisine-type item-info__list">
-            {info.recipe.cuisineType.length &&
-              info.recipe.cuisineType.map((item) => <li key={item}>{item}</li>)}
+            {info.cuisineType.length &&
+              info.cuisineType.map((item) => <li key={item}>{item}</li>)}
           </ul>
           <ul className="item-info__meal-type">
-            {info.recipe.mealType &&
-              info.recipe.mealType.map((item) => <li key={item}>{item}</li>)}
+            {info.mealType &&
+              info.mealType.map((item) => <li key={item}>{item}</li>)}
           </ul>
           <ul className="item-info__dish-type">
-            {info.recipe.dishType &&
-              info.recipe.dishType.map((item) => <li key={item}>{item}</li>)}
+            {info.dishType &&
+              info.dishType.map((item) => <li key={item}>{item}</li>)}
           </ul>
         </div>
         {/* <ul className="item-info__ingredient-lines item-info__list">
@@ -161,8 +161,8 @@ export default function ItemInfo({ info, closeInfoCallback }: ItemInfo) {
             ))}
         </ul> */}
         <ul className="item-info__ingredients item-info__list">
-          {info.recipe.ingredients.length &&
-            info.recipe.ingredients.map((item: any) => (
+          {info.ingredients.length &&
+            info.ingredients.map((item: any) => (
               <li key={item} className="item-info__ingredient">
                 <article className="item-info__ingredient__item">
                   <div className="item-info__ingredient__text">
@@ -188,15 +188,15 @@ export default function ItemInfo({ info, closeInfoCallback }: ItemInfo) {
         </ul>
         <ul className="item-info__main row gap-10">
           <li className="item-info__calories">
-            <span>Calories:</span> {roundNumber(info.recipe.calories, 1)}
+            <span>Calories:</span> {roundNumber(info.calories, 1)}
           </li>
           <li className="item-info____total-weight">
             <span>Total weight:</span>
-            {roundNumber(info.recipe.totalWeight , 1)}
+            {roundNumber(info.totalWeight , 1)}
           </li>
           <li className="item-info__total-time">
             <span>Total time:</span>
-            {info.recipe.totalTime}
+            {info.totalTime}
           </li>
         </ul>
 
@@ -214,8 +214,8 @@ export default function ItemInfo({ info, closeInfoCallback }: ItemInfo) {
         </div> */}
         <div className="item-info__digest">
           <ul className="digest item-info__list">
-            {info.recipe.digest.length &&
-              info.recipe.digest.map((item) => (
+            {info.digest.length &&
+              info.digest.map((item) => (
                 <li key={item.label} className="digest__item">
                   <ul className="digest__main item-info__list" style={{backgroundColor:  colorsMap[item.tag]}}>
                   <li className="digest__label">{item.label}</li>

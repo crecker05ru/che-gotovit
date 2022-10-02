@@ -1,6 +1,9 @@
 export interface Recipe {
     recipe: RecipeInfo
 }
+export interface TransformedRecipe {
+  [index: number]: RecipeInfo
+}
 export interface RecipeInfo {
     uri: string
     label: string

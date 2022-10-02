@@ -8,13 +8,16 @@ import { useSelector, useDispatch } from "react-redux"
 import { useActions } from "../../hooks/useActions"
 import { RootState } from "../../store/store"
 import ProcentCircle from "../ProcentCircle"
+import Loader from "../app/Loader"
+import {TransformedRecipe} from '../../types/recipes'
 
 export default function Main() {
   const [data, setData] = useState()
   const query = useQueryParams()
   const [que, setQue] = useState({ ...query.query })
-  const { recipes } = useSelector((state: RootState) => state.recipes)
+  const { recipes, status } = useSelector((state: RootState) => state.recipes)
   const { setRecipes, fetchRecipes } = useActions()
+  const transformedRecipes = recipes && recipes.map((item) => item  = {...item.recipe} as any)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -44,6 +47,18 @@ export default function Main() {
     getData()
   }, [query.currentUrl])
 
+  const [isLoading, setIsLoading] = useState(false)
+
+  useEffect(() => {
+    if(status === 'idle'){
+      setIsLoading(false)
+  }else if(status === 'loading'){
+    setIsLoading(true)
+  }else{
+    setIsLoading(false)
+  }
+  console.log('recipes',recipes)
+  },[status])
   return (
     <main className="main">
       <div className="main__wrapper wrapper">
@@ -55,10 +70,13 @@ export default function Main() {
         {/* <div className="main__circle-svg">
         <ProcentCircle />
         </div> */}
-
+      <div className={isLoading ? 'items__loader loader-in' : 'items__loader loader-out'}>
+      {<Loader />}
+      </div>
         <div className="main__items">
-          <Outlet />
-          {/* <Items /> */}
+          {/* <Outlet /> */}
+          {transformedRecipes?.length < 1 && <h4>No recipes found</h4>}
+          <Items recipes={transformedRecipes}/>
         </div>
       </div>
     </main>

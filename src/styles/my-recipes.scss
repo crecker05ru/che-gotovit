@@ -19,6 +19,14 @@
   &__receipts-item {
     width: 50%;
   }
+  &__ingredient-button {
+    margin-bottom: 10px;
+  }
+  &__ingredient-inputs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
 }
 .create-ingredient {
   flex: 1 0 400px;

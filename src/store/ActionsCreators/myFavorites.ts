@@ -1,2 +1,2 @@
-import { setMyFavrites, addToMyFavorites, deleteFromMyFavorites} from '../myFavorites'
-export { setMyFavrites, addToMyFavorites, deleteFromMyFavorites}
+import { setMyFavorites, addToMyFavorites, deleteFromMyFavorites} from '../myFavorites'
+export { setMyFavorites, addToMyFavorites, deleteFromMyFavorites}

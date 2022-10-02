@@ -37,6 +37,15 @@
     border: none;
     border-radius: 16px;
   }
+  &__step {
+    margin: 5px;
+    border: 2px solid #000;
+    border-radius: 8px;
+    padding: 5px;
+    width: fit-content;
+    list-style: decimal;
+    margin-left: 20px;
+  }
 }
 .edit-recipe {
   border-radius: 12px;

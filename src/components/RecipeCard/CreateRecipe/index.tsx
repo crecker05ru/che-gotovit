@@ -116,12 +116,15 @@ export default function СreateRecipe() {
         </div>
         <div className="create-recipe__body-create-ingredients">
           <h4>Ingredient description</h4>
-          <button onClick={addIngredient}>+ Ingredient</button>
+          <button onClick={addIngredient} className="create-recipe__ingredient-button">+ Ingredient</button>
+          <div className="create-recipe__ingredient-inputs">
           <input {...ingredientTitle} placeholder="Title" type="text" />
           <input {...ingredientImage} placeholder="Image URL" type="text" />
           <input {...ingredientQuantity} placeholder="Quantity" type="number" />
           <input {...ingredientMeasure} placeholder="Measure" type="text" />
           <input {...ingredientWeight} placeholder="Weight" type="number" />
+          </div>
+
         </div>
         <section>
           <Ingredients ingredients={ingredients}/>
@@ -132,7 +135,7 @@ export default function СreateRecipe() {
         <div className="create-recipe__body-steps">
           <button onClick={addStep}>+ Step</button>
           <div className="create-recipe__body-steps-input">
-            <textarea {...step} placeholder="Steps"></textarea>
+            <textarea {...step} placeholder="Describe step"></textarea>
           </div>
           <ul className="steps row">
             {steps.length > 0 &&

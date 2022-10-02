@@ -6,9 +6,9 @@ import App from './App';
 
 test('renders learn react link', () => {
   const { getByText } = render(
-    <Provider store={store}>
+    // <Provider store={store}>
       <App />
-    </Provider>
+    // </Provider>
   );
 
   expect(getByText(/learn/i)).toBeInTheDocument();

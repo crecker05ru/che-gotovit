@@ -1,13 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { MyRecipe } from '../../types/myRecipes';
+import {RecipeInfo} from '../../types/recipes'
 
 export interface MyFavoritesState {
-  myFavorites: MyRecipe[]
+  myFavorites: RecipeInfo[]
   status: 'idle' | 'loading' | 'failed'
 }
 
 const  updateMyFavoritesState =  (state: any) => {
-  localStorage.setItem('myFavorites', JSON.stringify(state.myRecipes))
+  localStorage.setItem('myFavorites', JSON.stringify(state.myFavorites))
   let myFavorites = localStorage.getItem('myFavorites')
   let parsedMyFavorites = JSON.parse( myFavorites as string)
   state.myFavorites = parsedMyFavorites
@@ -21,7 +22,7 @@ export const myFavoritesSlice = createSlice({
   name: 'myFavorites',
   initialState,
   reducers: {
-    setMyFavrites: (state) => {
+    setMyFavorites: (state) => {
       if(localStorage.getItem('myFavorites') == null){
         localStorage.setItem('myFavorites', JSON.stringify(state.myFavorites))
     }
@@ -36,10 +37,10 @@ export const myFavoritesSlice = createSlice({
       updateMyFavoritesState(state)
     },
     deleteFromMyFavorites: (state, action) => {
-      state.myFavorites = state.myFavorites.filter(favorite => favorite.title !== action.payload.title)
+      state.myFavorites = state.myFavorites.filter(favorite => favorite.label !== action.payload.label)
     }
   }
 })
 
-export const { setMyFavrites,addToMyFavorites,deleteFromMyFavorites } = myFavoritesSlice.actions
+export const { setMyFavorites,addToMyFavorites,deleteFromMyFavorites } = myFavoritesSlice.actions
 export default myFavoritesSlice.reducer

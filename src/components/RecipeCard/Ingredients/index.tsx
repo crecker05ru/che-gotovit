@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from "react"
-import Ingredient from "../Ingredients/Ingredient"
+import React, { useEffect, useState } from 'react'
+import Ingredient from '../Ingredients/Ingredient'
 
-export default function Ingredients({
+export default function Ingredients ({
   ingredients,
   isEdit = false,
-  setIngredients = () => {},
+  setIngredients = () => {}
 }: any) {
   const [editIngredients, setEditIngredients] = useState(ingredients)
   const updateIngredient = (id: number, ingredient: any) => {
-    let newIngredients = editIngredients.map((item: any, index: number) =>
-      index === id ?  {...item,...ingredient} : item
+    const newIngredients = editIngredients.map((item: any, index: number) =>
+      index === id ? { ...item, ...ingredient } : item
     )
     setEditIngredients(newIngredients)
     // ingredients[index] = ingredient
   }
   useEffect(() => {
     setIngredients(editIngredients)
-    console.log('editIngredients',editIngredients)
+    console.log('editIngredients', editIngredients)
   }, [editIngredients])
 
   return (

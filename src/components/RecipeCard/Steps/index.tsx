@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react"
-import Step from "./Step"
+import React, { useEffect, useState } from 'react'
+import Step from './Step'
 
-export default function Steps({ steps, isEdit, setSteps }: any) {
+export default function Steps ({ steps, isEdit, setSteps }: any) {
   const [editSteps, setEditSteps] = useState(steps)
 
   const updateSteps = (id: number, step: string) => {
     // let newSteps = steps.map((item, index) => index === id ? item = step : item)
     // let newSteps = editSteps.map((item, index) => index === id ? item = step : item)
-    let copyArr = [...editSteps]
+    const copyArr = [...editSteps]
     copyArr[id] = step
     setEditSteps(copyArr)
     // setEditSteps(newSteps)
@@ -24,11 +24,13 @@ export default function Steps({ steps, isEdit, setSteps }: any) {
       {steps.length > 0 &&
         steps.map((step: string, index: number) => (
           <li className="recipe-card__step" key={index}>
-            {isEdit ? (
+            {isEdit
+              ? (
               <Step value={step} id={index} updateSteps={updateSteps} />
-            ) : (
+                )
+              : (
               <span>{step}</span>
-            )}
+                )}
           </li>
         ))}
     </ul>

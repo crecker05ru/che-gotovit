@@ -1,67 +1,67 @@
-import { useCallback, useMemo } from "react";
+import { useCallback, useMemo } from 'react'
 
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from 'react-router-dom'
 
 export const useQueryParams = () => {
-  const replace = useNavigate();
-  const location = useLocation();
-  const url = new URL(window.location.href);
-  const params = new URLSearchParams(url.search);
-  let currentUrl = url.href;
-  let pathname = url.origin;
+  const replace = useNavigate()
+  const location = useLocation()
+  const url = new URL(window.location.href)
+  const params = new URLSearchParams(url.search)
+  let currentUrl = url.href
+  const pathname = url.origin
   let query = useMemo(() => {
-    let result = {};
-    for (let [key, val] of params.entries()) {
-      result = { ...result, [key]: val };
+    let result = {}
+    for (const [key, val] of params.entries()) {
+      result = { ...result, [key]: val }
     }
-    return result;
-  }, [params, pathname, replace]);
+    return result
+  }, [params, pathname, replace])
 
   const queryParams: string[][] = useMemo(() => {
-    return Object.entries<any>(query);
-  }, [query]);
+    return Object.entries<any>(query)
+  }, [query])
 
   const addQueryParams = useCallback(
     (paramsToAdd: Record<string, any>) => {
-      for (var name in paramsToAdd) {
+      for (const name in paramsToAdd) {
         if (query.hasOwnProperty(name)) {
-          return `${paramsToAdd} already exist`;
+          return `${paramsToAdd} already exist`
         }
 
-        const searchParams = [...queryParams, ...Object.entries(paramsToAdd)];
-        const newParams = new URLSearchParams(searchParams);
+        const searchParams = [...queryParams, ...Object.entries(paramsToAdd)]
+        const newParams = new URLSearchParams(searchParams)
 
-        replace(`?${newParams}`);
+        replace(`?${newParams}`)
 
-        return newParams;
+        return newParams
       }
     },
     [query, queryParams, pathname, replace]
-  );
+  )
 
   const updateQueryParam = useCallback(
     (key: string, value: string) => {
-      let currentParams = new URLSearchParams(queryParams);
-      currentParams.set(key, value);
-      replace(`?${currentParams.toString()}`);
+      const currentParams = new URLSearchParams(queryParams)
+      currentParams.set(key, value)
+      replace(`?${currentParams.toString()}`)
     },
     [pathname, queryParams, replace]
-  );
+  )
 
   const deleteQueryParam = useCallback(
     (key: string) => {
-      let currentParams = new URLSearchParams(queryParams);
-      currentParams.delete(key);
-      replace(``);
+      const currentParams = new URLSearchParams(queryParams)
+      currentParams.delete(key)
+      replace('')
     },
     [pathname, queryParams, replace]
-  );
+  )
 
   const restore = useCallback(() => {
-    query = {};
-    currentUrl = pathname;
-    replace("");
-  }, [pathname, queryParams, query]);
+    query = {}
+    currentUrl = pathname
+    replace('')
+  }, [pathname, queryParams, query])
 
   return {
     currentUrl,
@@ -73,6 +73,6 @@ export const useQueryParams = () => {
     queryParams,
     addQueryParams,
     updateQueryParam,
-    deleteQueryParam,
-  };
-};
+    deleteQueryParam
+  }
+}

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function EditRecipe() {
+export default function EditRecipe () {
   return (
     <div>
        {/* <div className="recipe-card__body">

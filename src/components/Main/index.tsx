@@ -1,64 +1,64 @@
-import React, { useEffect, useState } from "react"
-import { http } from "../../api/http"
-import Items from "../Items"
-import Search from "../Search"
-import { Outlet, Link } from "react-router-dom"
-import { useQueryParams } from "../../hooks/useQueryParams"
-import { useSelector, useDispatch } from "react-redux"
-import { useActions } from "../../hooks/useActions"
-import { RootState } from "../../store/store"
-import ProcentCircle from "../ProcentCircle"
-import Loader from "../app/Loader"
-import {TransformedRecipe} from '../../types/recipes'
+import React, { useEffect, useState } from 'react'
+import { http } from '../../api/http'
+import Items from '../Items'
+import Search from '../Search'
+import { Outlet, Link } from 'react-router-dom'
+import { useQueryParams } from '../../hooks/useQueryParams'
+import { useSelector, useDispatch } from 'react-redux'
+import { useActions } from '../../hooks/useActions'
+import { RootState } from '../../store/store'
+import ProcentCircle from '../ProcentCircle'
+import Loader from '../app/Loader'
+import { TransformedRecipe } from '../../types/recipes'
 
-export default function Main() {
+export default function Main () {
   const [data, setData] = useState()
   const query = useQueryParams()
   const [que, setQue] = useState({ ...query.query })
   const { recipes, status } = useSelector((state: RootState) => state.recipes)
   const { setRecipes, fetchRecipes } = useActions()
-  const transformedRecipes = recipes && recipes.map((item) => item  = {...item.recipe} as any)
+  const transformedRecipes = recipes && recipes.map((item) => item = { ...item.recipe } as any)
   const dispatch = useDispatch()
 
   useEffect(() => {
     if (!que) {
       return
     }
-    async function getData() {
+    async function getData () {
       // const response = await http.get('',{params: {q: 'pot'}})
       // const response = await http.get("", { params: query.query });
-      const response = await fetchRecipes({ url: "", options: query.query })
-      console.log("uery", query)
+      const response = await fetchRecipes({ url: '', options: query.query })
+      console.log('uery', query)
       // const response = await fetch('https://api.edamam.com/search?app_id=900da95e&app_key=40698503668e0bb3897581f4766d77f9&q=pot&healt=celery-free&diet=high-protein')
-      console.log("response", response)
+      console.log('response', response)
       console.log(
-        "process.env.REACT_APP_API_KEY",
+        'process.env.REACT_APP_API_KEY',
         process.env.REACT_APP_API_KEY
       )
       // setData(response.data.hits);
       // setData(recipes)
       // setRecipes(response.data.hits)
-      console.log("store", recipes)
-      console.log("data", data)
+      console.log('store', recipes)
+      console.log('data', data)
     }
-    console.log("query", query)
-    console.log("query.location", query.location)
-    console.log("que", que)
+    console.log('query', query)
+    console.log('query.location', query.location)
+    console.log('que', que)
     getData()
   }, [query.currentUrl])
 
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    if(status === 'idle'){
+    if (status === 'idle') {
       setIsLoading(false)
-  }else if(status === 'loading'){
-    setIsLoading(true)
-  }else{
-    setIsLoading(false)
-  }
-  console.log('recipes',recipes)
-  },[status])
+    } else if (status === 'loading') {
+      setIsLoading(true)
+    } else {
+      setIsLoading(false)
+    }
+    console.log('recipes', recipes)
+  }, [status])
   return (
     <main className="main">
       <div className="main__wrapper wrapper">

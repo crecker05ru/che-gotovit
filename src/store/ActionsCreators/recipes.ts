@@ -1,4 +1,3 @@
-import { setRecipes,fetchRecipes } from '../recipes'
+import { setRecipes, fetchRecipes } from '../recipes'
 
-export {setRecipes, fetchRecipes}
-
+export { setRecipes, fetchRecipes }

@@ -1,8 +1,8 @@
-import React, { useState } from "react"
+import React, { useState } from 'react'
 
-export default function useInput(initialValue: string | number | undefined = undefined) {
+export default function useInput (initialValue: string | number | undefined = undefined) {
   const [value, setValue] = useState(initialValue)
-  
+
   const onChange = (e: any) => {
     setValue(e.target.value)
   }
@@ -10,6 +10,6 @@ export default function useInput(initialValue: string | number | undefined = und
   return {
     value,
     onChange,
-    setValue,
+    setValue
   }
 }

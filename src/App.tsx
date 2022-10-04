@@ -1,21 +1,20 @@
-import React from "react"
-import "./styles/App.scss"
-import Header from "./components/Header"
-import Main from "./components/Main"
-import Footer from "./components/Footer"
-import { Routes, Route } from "react-router-dom"
-import ItemInfo from "./components/ItemInfo"
-import Items from "./components/Items"
-import FoodPage from "./pages/Food"
-import WherePage from "./pages/Where"
-import ServicePage from "./pages/Service"
-import JobsPage from "./pages/Job"
-import ContactsPage from "./pages/Contacts"
-import AboutUsPage from "./pages/AboutUs"
-import MyRecipes from "./pages/MyRecipes"
-import MyFavorites from "./pages/MyFavorites"
+import React from 'react'
+import './styles/App.scss'
+import Header from './components/Header'
+import Main from './components/Main'
+import Footer from './components/Footer'
+import { Routes, Route } from 'react-router-dom'
+import Items from './components/Items'
+import FoodPage from './pages/Food'
+import WherePage from './pages/Where'
+import ServicePage from './pages/Service'
+import JobsPage from './pages/Job'
+import ContactsPage from './pages/Contacts'
+import AboutUsPage from './pages/AboutUs'
+import MyRecipes from './pages/MyRecipes'
+import MyFavorites from './pages/MyFavorites'
 
-function App() {
+function App () {
   return (
     <div className="App">
       <Header />
@@ -27,8 +26,8 @@ function App() {
             <Route
               path="*"
               element={
-                <main style={{ padding: "1rem" }}>
-                  <p>There's nothing here!</p>
+                <main style={{ padding: '1rem' }}>
+                  <p>There&apos;s nothing here!</p>
                 </main>
               }
             />

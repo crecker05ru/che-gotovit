@@ -1,50 +1,50 @@
-import React, { useEffect } from "react"
-import { useSelector } from "react-redux"
-import { useParams } from "react-router-dom"
-import { roundNumber } from "../../helpers/roundNumber"
-import { useAppSelector } from "../../store/hooks"
-import { RecipeInfo, Recipe } from "../../types/recipes"
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
+import { roundNumber } from '../../helpers/roundNumber'
+import { useAppSelector } from '../../store/hooks'
+import { RecipeInfo, Recipe } from '../../types/recipes'
 
 interface ColorsMap {
   [key: string]: string
 }
 
 const colorsMap: ColorsMap = {
-  "SUGAR.added": "#ccffcc",
-  CA: "#344c4c",
-  "CHOCDF.net": "#00ff5e",
-  CHOCDF: "#33ff7e",
-  CHOLE: "#996600",
-  ENERC_KCAL: "#0061ff",
-  FAMS: "#ffc61a",
-  FAPU: "#ffcc33",
-  FASAT: "#ffc61a",
-  FATRN: "#cc9900",
-  FIBTG: "#006600",
-  FOLDFE: "#00b300",
-  FOLFD: "#008000",
-  FOLAC: "#00e600",
-  FE: "#e0e0eb",
-  MG: "#e6ffe6",
-  NIA: "#ffcce6",
-  P: "#660033",
-  K: "#7373a5",
-  PROCNT: "#ff0400",
-  RIBF: "#ff9933",
-  NA: "#99b3ff",
-  "Sugar.alcohol": "#990000",
-  SUGAR: "#ccffcc",
-  THIA: "#009900",
-  FAT: "#ffd000",
-  VITA_RAE: "#ff4d00",
-  VITB12: "#b31919",
-  VITB6A: "#983601",
-  VITC: "#ffdd00",
-  VITD: "#a6c5f7",
-  TOCPHA: "#f0d000",
-  VITK1: "#36ae1e",
-  WATER: "#99c2ff",
-  ZN: "#00cc00",
+  'SUGAR.added': '#ccffcc',
+  CA: '#344c4c',
+  'CHOCDF.net': '#00ff5e',
+  CHOCDF: '#33ff7e',
+  CHOLE: '#996600',
+  ENERC_KCAL: '#0061ff',
+  FAMS: '#ffc61a',
+  FAPU: '#ffcc33',
+  FASAT: '#ffc61a',
+  FATRN: '#cc9900',
+  FIBTG: '#006600',
+  FOLDFE: '#00b300',
+  FOLFD: '#008000',
+  FOLAC: '#00e600',
+  FE: '#e0e0eb',
+  MG: '#e6ffe6',
+  NIA: '#ffcce6',
+  P: '#660033',
+  K: '#7373a5',
+  PROCNT: '#ff0400',
+  RIBF: '#ff9933',
+  NA: '#99b3ff',
+  'Sugar.alcohol': '#990000',
+  SUGAR: '#ccffcc',
+  THIA: '#009900',
+  FAT: '#ffd000',
+  VITA_RAE: '#ff4d00',
+  VITB12: '#b31919',
+  VITB6A: '#983601',
+  VITC: '#ffdd00',
+  VITD: '#a6c5f7',
+  TOCPHA: '#f0d000',
+  VITK1: '#36ae1e',
+  WATER: '#99c2ff',
+  ZN: '#00cc00'
 }
 
 interface ItemInfo {
@@ -73,8 +73,7 @@ interface Digest {
   sub: []
 }
 
-
-export default function ItemInfo({ info, closeInfoCallback }: ItemInfo) {
+export default function ItemInfo ({ info, closeInfoCallback }: ItemInfo) {
   const params = useParams()
   const { recipes } = useAppSelector((state) => state.recipes)
 
@@ -84,7 +83,7 @@ export default function ItemInfo({ info, closeInfoCallback }: ItemInfo) {
         <li className="total-nutrients__item">
           <div className="total-nutrients__title">{item[0]}</div>
           <div className="total-nutrients__label">{item[1].label}</div>
-          <div className="total-nutrients__quantity">{roundNumber(item[1].quantity,1) }</div>
+          <div className="total-nutrients__quantity">{roundNumber(item[1].quantity, 1) }</div>
           <div className="total-nutrients__unit">{item[1].unit}</div>
         </li>
       )
@@ -105,8 +104,8 @@ export default function ItemInfo({ info, closeInfoCallback }: ItemInfo) {
   }, [info.totalDaily])
 
   useEffect(() => {
-    console.log("info.digest", info.digest)
-    console.log("totalNutrientsArr", totalNutrientsArr)
+    console.log('info.digest', info.digest)
+    console.log('totalNutrientsArr', totalNutrientsArr)
   }, [])
   return (
     <article className="item-info">
@@ -192,14 +191,13 @@ export default function ItemInfo({ info, closeInfoCallback }: ItemInfo) {
           </li>
           <li className="item-info____total-weight">
             <span>Total weight:</span>
-            {roundNumber(info.totalWeight , 1)}
+            {roundNumber(info.totalWeight, 1)}
           </li>
           <li className="item-info__total-time">
             <span>Total time:</span>
             {info.totalTime}
           </li>
         </ul>
-
 
         {/* <div className="item-info__total-nutrients ">
           <ul className="total-nutrients item-info__list">
@@ -217,14 +215,14 @@ export default function ItemInfo({ info, closeInfoCallback }: ItemInfo) {
             {info.digest.length &&
               info.digest.map((item) => (
                 <li key={item.label} className="digest__item">
-                  <ul className="digest__main item-info__list" style={{backgroundColor:  colorsMap[item.tag]}}>
+                  <ul className="digest__main item-info__list" style={{ backgroundColor: colorsMap[item.tag] }}>
                   <li className="digest__label">{item.label}</li>
                   {/* <div className="digest__tag">{item.tag}</div> */}
                   {/* <div className="digest__schema">{item.schemaOrgTag}</div> */}
                   <li className="digest__total">Total: {roundNumber(item.total, 1) }</li>
                   <li className="digest__rdi">{item.hasRDI}</li>
                   <li className="digest__daily">Daily: {roundNumber(item.daily, 1)} <span className="digest__unit">{item.unit}</span></li>
-                  </ul>                 
+                  </ul>
                   <ul className="digest__sub item-info__list">
                     {item.sub &&
                       item.sub.map((s) => (

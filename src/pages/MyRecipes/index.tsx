@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
-import СreateRecipe from "../../components/RecipeCard/CreateRecipe";
-import RecipeCard from "../../components/RecipeCard";
-import { useActions } from "../../hooks/useActions";
-import { RootState } from "../../store/store";
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import СreateRecipe from '../../components/RecipeCard/CreateRecipe'
+import RecipeCard from '../../components/RecipeCard'
+import { useActions } from '../../hooks/useActions'
+import { RootState } from '../../store/store'
 
-export default function MyRecipes() {
-  const { myRecipes } = useSelector((state: RootState) => state.myRecipes);
+export default function MyRecipes () {
+  const { myRecipes } = useSelector((state: RootState) => state.myRecipes)
   const { setMyRecipes } = useActions()
 
   useEffect(() => {
@@ -31,5 +31,5 @@ export default function MyRecipes() {
         </div>
       </div>
     </div>
-  );
+  )
 }

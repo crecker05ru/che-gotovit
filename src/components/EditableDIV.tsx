@@ -1,10 +1,10 @@
-import React, { useRef, useState } from "react"
+import React, { useRef, useState } from 'react'
 
-export const EditableDIV = ({value,onChange,className}: any) => {
+export const EditableDIV = ({ value, onChange, className }: any) => {
   const [localValue, setLocalValue] = useState(value)
   const ref = useRef(null)
   const onLocalChange = (e: any) => {
-    let elem: any = ref.current
+    const elem: any = ref.current
     onChange(elem.textContent)
     setLocalValue(elem.textContent)
   }

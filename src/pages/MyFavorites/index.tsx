@@ -5,13 +5,13 @@ import Items from '../../components/Items'
 import { useActions } from '../../hooks/useActions'
 import { RootState } from '../../store/store'
 
-export default function MyFavorites() {
-  const {setMyFavorites,deleteFromMyFavorites} = useActions()
-  const{ myFavorites } = useSelector((state: RootState) => state.myFavorites)
-useEffect(() => {
-  setMyFavorites()
-  console.log('myFavorites',myFavorites)
-},[])
+export default function MyFavorites () {
+  const { setMyFavorites, deleteFromMyFavorites } = useActions()
+  const { myFavorites } = useSelector((state: RootState) => state.myFavorites)
+  useEffect(() => {
+    setMyFavorites()
+    console.log('myFavorites', myFavorites)
+  }, [])
   return (
     <div className='favorites wrapper'>
       <h1>MyFavorites</h1>

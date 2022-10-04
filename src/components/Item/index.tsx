@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
-import { roundNumber } from "../../helpers/roundNumber"
-import { useActions } from "../../hooks/useActions"
-import FlipCard from "../FlipCard"
-import ProcentCircle from "../ProcentCircle"
-import Favorite from "../Favorite"
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { roundNumber } from '../../helpers/roundNumber'
+import { useActions } from '../../hooks/useActions'
+import FlipCard from '../FlipCard'
+import ProcentCircle from '../ProcentCircle'
+import Favorite from '../Favorite'
 
-export default function Item({ data, openInfoCallback }: any) {
-  const {addToMyFavorites, deleteFromMyFavorites} = useActions()
+export default function Item ({ data, openInfoCallback }: any) {
+  const { addToMyFavorites, deleteFromMyFavorites } = useActions()
   const [isFavorite, setIsFavorite] = useState(false)
   const [isFlipped, setIsFlipped] = useState(false)
   const navigate = useNavigate()
@@ -17,20 +17,20 @@ export default function Item({ data, openInfoCallback }: any) {
     navigate(`item-info/${data.label}`)
   }
   const favoriteHandler = () => {
-    if(isFavorite) {
+    if (isFavorite) {
       setIsFavorite(false)
       deleteFromMyFavorites(data)
     } else {
       setIsFavorite(true)
       addToMyFavorites(data)
-      console.log('data',data)
-      console.log('isFavorite',isFavorite)
+      console.log('data', data)
+      console.log('isFavorite', isFavorite)
     }
   }
   useEffect(() => {
     // console.log('data',data)
     // console.log(',recipe)
-  },[])
+  }, [])
   return (
     <div className="item">
       <FlipCard isFlipped={isFlipped}>
@@ -59,46 +59,46 @@ export default function Item({ data, openInfoCallback }: any) {
             <ul className="item__nutrients row">
               <li className="item__nutrient-item">
                 <div className="item__nutrient-energy">
-                  
+
                   <div className="item__energy-quantity">
                   <div className="item__energy-icon"></div>
                     {roundNumber(
-                      data.totalNutrients["ENERC_KCAL"].quantity,
+                      data.totalNutrients.ENERC_KCAL.quantity,
                       2
-                    )}{" "}
-                    {data.totalNutrients["ENERC_KCAL"].unit}
+                    )}{' '}
+                    {data.totalNutrients.ENERC_KCAL.unit}
                   </div>
                 </div>
                 <div className="item__energy-daily">
                     <div className="item__energy-daily-procent procent-icon">
                       <ProcentCircle
                         procent={roundNumber(
-                          data.totalDaily["ENERC_KCAL"].quantity,
+                          data.totalDaily.ENERC_KCAL.quantity,
                           1
                         )}
-                        stroke={"#0061ff"}
+                        stroke={'#0061ff'}
                       />
                     </div>
                 </div>
               </li>
               <li className="item__nutrient-item">
                 <div className="item__nutrient-fat">
-                   {" "}
-                  <span>{data.totalNutrients["FAT"].label}:</span>
+                   {' '}
+                  <span>{data.totalNutrients.FAT.label}:</span>
                   {roundNumber(
-                    data.totalNutrients["FAT"].quantity,
+                    data.totalNutrients.FAT.quantity,
                     2
-                  )} {" "}
-                  {data.totalNutrients["FAT"].unit}
+                  )} {' '}
+                  {data.totalNutrients.FAT.unit}
                 </div>
                 <div className="item__fat-daily">
                   <div className="item__nutrient-fat-procent procent-icon">
                     <ProcentCircle
                       procent={roundNumber(
-                        data.totalDaily["FAT"].quantity,
+                        data.totalDaily.FAT.quantity,
                         1
                       )}
-                      stroke={"#ffd000"}
+                      stroke={'#ffd000'}
                     />
                   </div>
                 </div>
@@ -106,39 +106,39 @@ export default function Item({ data, openInfoCallback }: any) {
 
               <li className="item__nutrient-item">
                 <div className="item__nutrient-protein">
-                  <span>{data.totalNutrients["PROCNT"].label}:</span>
+                  <span>{data.totalNutrients.PROCNT.label}:</span>
                   {roundNumber(
-                    data.totalNutrients["PROCNT"].quantity,
+                    data.totalNutrients.PROCNT.quantity,
                     2
-                  )} {" "}
-                  {data.totalNutrients["PROCNT"].unit}
+                  )} {' '}
+                  {data.totalNutrients.PROCNT.unit}
                 </div>
                 <div className="item__protein-daily">
                   <div className="item__protein-icon procent-icon">
                     <ProcentCircle
                       procent={roundNumber(
-                        data.totalDaily["PROCNT"].quantity,
+                        data.totalDaily.PROCNT.quantity,
                         2
                       )}
-                      stroke={"#ff0400"}
+                      stroke={'#ff0400'}
                     />
                   </div>
                 </div>
               </li>
               <li className="item__nutrient-item">
                 <div className="item__nutrient-сarbohydrate">
-                  <span>{data.totalNutrients["CHOCDF"].label}:</span>
+                  <span>{data.totalNutrients.CHOCDF.label}:</span>
                   {roundNumber(
-                    data.totalNutrients["CHOCDF"].quantity,
+                    data.totalNutrients.CHOCDF.quantity,
                     2
-                  )} {" "}
-                  {data.totalNutrients["CHOCDF"].unit}
+                  )} {' '}
+                  {data.totalNutrients.CHOCDF.unit}
                 </div>
                 <div className="item__сarbohydrate-daily">
                 <div className="item__сarbohydrate-icon procent-icon">
                 <ProcentCircle
                     procent={roundNumber(
-                      data.totalDaily["CHOCDF"].quantity,
+                      data.totalDaily.CHOCDF.quantity,
                       1
                     )}
                   />

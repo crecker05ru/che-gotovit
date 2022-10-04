@@ -2,16 +2,16 @@ import React, { useState } from 'react'
 import useInput from '../../hooks/useInput'
 import { Ingredient } from '../../types/myRecipes'
 
-export default function CreateIngredient() {
-  const title = useInput("")
-  const image = useInput("")
+export default function CreateIngredient () {
+  const title = useInput('')
+  const image = useInput('')
   const quantity = useInput()
   const measure = useInput()
   const weight = useInput()
   const [ingredient, setIngredient] = useState<Ingredient>()
 
   const addIngredient = () => {
-    let ingredient: Ingredient = {
+    const ingredient: Ingredient = {
       title: title.value as string,
       image: image.value as string,
       quantity: quantity.value as string,
@@ -19,7 +19,7 @@ export default function CreateIngredient() {
       weight: weight.value as string
     }
     setIngredient(ingredient)
-    console.log('ingredient',ingredient)
+    console.log('ingredient', ingredient)
   }
   return (
     <div> <button onClick={addIngredient}>+ Ingredient</button>

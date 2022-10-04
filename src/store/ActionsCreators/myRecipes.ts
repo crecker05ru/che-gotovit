@@ -1,3 +1,3 @@
-import { setMyRecipes,addMyRecipe, editMyRecipe, deleteMyRecipe, updateIngredient } from "../myRecipes";
+import { setMyRecipes, addMyRecipe, editMyRecipe, deleteMyRecipe, updateIngredient } from '../myRecipes'
 
-export { setMyRecipes,addMyRecipe, editMyRecipe, deleteMyRecipe, updateIngredient }
+export { setMyRecipes, addMyRecipe, editMyRecipe, deleteMyRecipe, updateIngredient }

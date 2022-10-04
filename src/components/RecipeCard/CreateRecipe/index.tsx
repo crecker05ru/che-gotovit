@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react"
-import { setConstantValue } from "typescript"
-import { roundNumber } from "../../../helpers/roundNumber"
-import { useActions } from "../../../hooks/useActions"
-import useInput from "../../../hooks/useInput"
-import Ingredients from "../Ingredients"
-import Ingredient from "../Ingredients/Ingredient"
+import React, { useEffect, useState } from 'react'
+import { setConstantValue } from 'typescript'
+import { roundNumber } from '../../../helpers/roundNumber'
+import { useActions } from '../../../hooks/useActions'
+import useInput from '../../../hooks/useInput'
+import Ingredients from '../Ingredients'
+import Ingredient from '../Ingredients/Ingredient'
 
 type Dispatch<A> = (value: A) => void
 type SetStateAction<S> = S | ((prevState: S) => S)
@@ -40,27 +40,27 @@ interface IngredientState {
 interface Ingredients {
   [index: number]: Ingredient
 }
-export default function СreateRecipe() {
+export default function СreateRecipe () {
   const currentIngredient: Ingredient = {
-    title: "",
-    image: "",
-    quantity: "",
-    measure: "",
-    weight: "",
+    title: '',
+    image: '',
+    quantity: '',
+    measure: '',
+    weight: ''
   }
-  const title = useInput("")
-  const image = useInput("")
+  const title = useInput('')
+  const image = useInput('')
   const weight = useInput()
   const totalTime = useInput()
   const [ingredient, setIngredient] = useState(currentIngredient)
-  const [ingredients, setIngredients] = useState<Array<Ingredient>>([])
-  const ingredientTitle = useInput("")
-  const ingredientImage = useInput("")
+  const [ingredients, setIngredients] = useState<Ingredient[]>([])
+  const ingredientTitle = useInput('')
+  const ingredientImage = useInput('')
   // const ingredientWeight = useInput()
   const ingredientQuantity = useInput()
   const ingredientMeasure = useInput()
   const ingredientWeight = useInput()
-  const step: any = useInput("")
+  const step: any = useInput('')
   const [steps, setSteps] = useState<string[]>([])
   const [recipe, setRecipe] = useState({})
   const { addMyRecipe, setMyRecipes } = useActions()
@@ -71,24 +71,24 @@ export default function СreateRecipe() {
   }
 
   const addIngredient = () => {
-    let ingredient: Ingredient = {
+    const ingredient: Ingredient = {
       title: ingredientTitle.value as string,
       image: ingredientImage.value as string,
       quantity: ingredientQuantity.value as string,
       measure: ingredientMeasure.value as string,
-      weight: ingredientWeight.value as string,
+      weight: ingredientWeight.value as string
     }
     setIngredients(ingredients.concat([ingredient]))
-    console.log("ingredients", ingredients)
+    console.log('ingredients', ingredients)
   }
   const createRecipe = () => {
-    let item = {
+    const item = {
       title: title.value,
       image: image.value,
       weight: weight.value,
       totalTime: totalTime.value,
       ingredients,
-      steps,
+      steps
     }
     setRecipe(item)
     addMyRecipe(item)

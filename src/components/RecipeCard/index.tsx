@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react"
-import { useActions } from "../../hooks/useActions"
-import useInput from "../../hooks/useInput"
-import Steps from "./Steps"
-import { MyRecipe } from "../../types/myRecipes"
-import { EditableDIV } from "../EditableDIV"
-import Ingredient from "./Ingredients/Ingredient"
-import Step from "./Steps/Step"
-import Ingredients from "./Ingredients"
+import React, { useEffect, useState } from 'react'
+import { useActions } from '../../hooks/useActions'
+import useInput from '../../hooks/useInput'
+import Steps from './Steps'
+import { MyRecipe } from '../../types/myRecipes'
+import { EditableDIV } from '../EditableDIV'
+import Ingredient from './Ingredients/Ingredient'
+import Step from './Steps/Step'
+import Ingredients from './Ingredients'
 
-export default function RecipeCard({
+export default function RecipeCard ({
   title,
   image,
   ingredients,
@@ -17,7 +17,7 @@ export default function RecipeCard({
   steps,
   quantity,
   measure,
-  recipeId,
+  recipeId
 }: MyRecipe) {
   const [isEdit, setIsEdit] = useState(false)
   const editTitle = useInput(title)
@@ -58,13 +58,13 @@ export default function RecipeCard({
   }
   const editRecipeHandler = () => {
     setTimeout(() => {
-      let item = {
+      const item = {
         title,
         image: editImage.value,
         weight: editWeight.value,
         totalTime: editTotalTime.value,
         ingredients: editIngredients,
-        steps: editSteps,
+        steps: editSteps
       }
       setEditedRecipe(item)
       editMyRecipe(item)
@@ -83,17 +83,19 @@ export default function RecipeCard({
       <div className="recipe-card__body">
         {/* <h3 className="recipe-card__title">{isEdit ? <EditableDIV className="edit-recipe__title edit" {...editTitle}/> : <span>Title: {title}</span>}</h3> */}
         <h3 className="recipe-card__title">{title}</h3>
-        {isEdit ? (
+        {isEdit
+          ? (
           <div
             className="recipe-card__icon edit-done-icon"
             onClick={editRecipeHandler}
           ></div>
-        ) : (
+            )
+          : (
           <div
             className="recipe-card__icon edit-icon"
             onClick={editModeHandler}
           ></div>
-        )}
+            )}
 
         <div className="recipe-card__image">
           {isEdit ? (

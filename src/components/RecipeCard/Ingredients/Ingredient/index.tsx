@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react"
-import { roundNumber } from "../../../../helpers/roundNumber"
-import { useActions } from "../../../../hooks/useActions"
-import useInput from "../../../../hooks/useInput"
+import React, { useEffect, useState } from 'react'
+import { roundNumber } from '../../../../helpers/roundNumber'
+import { useActions } from '../../../../hooks/useActions'
+import useInput from '../../../../hooks/useInput'
 
-export default function Ingredient({
-  title = "",
-  text = "",
-  weight = "",
-  image = "",
-  quantity = "",
-  measure = "",
+export default function Ingredient ({
+  title = '',
+  text = '',
+  weight = '',
+  image = '',
+  quantity = '',
+  measure = '',
   id,
   isEdit,
-  updateIngredient,
+  updateIngredient
 }: any) {
   // const [isEdit, setIsEdit] = useState(false)
   // const editTitle = useInput(title)
@@ -27,28 +27,28 @@ export default function Ingredient({
   //   setIsEdit(true)
   // }
   const editIngredientHandler = () => {
-    let item = {
+    const item = {
       id,
       title,
       text: editText.value,
       weight: editWeight.value,
       image: editImage.value,
       quantity: editQuantity.value,
-      measure: editMeasure.value,
+      measure: editMeasure.value
     }
     // setIsEdit(false)
     // updateIngredient(item)
     updateIngredient(id, item)
   }
   useEffect(() => {
-    let item = {
+    const item = {
       // id,
       title,
       text: editText.value,
       weight: editWeight.value,
       image: editImage.value,
       quantity: editQuantity.value,
-      measure: editMeasure.value,
+      measure: editMeasure.value
     }
     updateIngredient(id, item)
   }, [
@@ -56,12 +56,12 @@ export default function Ingredient({
     editWeight.value,
     editImage.value,
     editQuantity.value,
-    editMeasure.value,
+    editMeasure.value
   ])
   return (
     <div className="ingredient">
       <article className="ingredient__item">
-        {/* {isEdit ? <div onClick={editIngredientHandler} className="ingredient__icon edit-done-icon-s"></div> 
+        {/* {isEdit ? <div onClick={editIngredientHandler} className="ingredient__icon edit-done-icon-s"></div>
         :<div onClick={editModeHandler} className="ingredient__icon edit-icon-s"></div>} */}
         <div className="ingredient__title">
           Ingredient: <span>{title}</span>
@@ -70,39 +70,47 @@ export default function Ingredient({
             text: <span>{text}</span>
           </div> */}
         <div className="ingredient__quantity">
-          Quantity:{" "}
-          {isEdit ? (
+          Quantity:{' '}
+          {isEdit
+            ? (
             <input className="edit-ingredient" {...editQuantity} />
-          ) : (
+              )
+            : (
             <span>{quantity}</span>
-          )}
+              )}
         </div>
         <div className="ingredient__measure">
-          Measure:{" "}
-          {isEdit ? (
+          Measure:{' '}
+          {isEdit
+            ? (
             <input className="edit-ingredient" {...editMeasure} />
-          ) : (
+              )
+            : (
             <span>{measure}</span>
-          )}
+              )}
         </div>
         {/* <div className="ingredient__food">Food: <span>{food}</span></div> */}
         <div className="ingredient__weight">
-          Weight:{" "}
-          {isEdit ? (
+          Weight:{' '}
+          {isEdit
+            ? (
             <input className="edit-ingredient" {...editWeight} />
-          ) : (
+              )
+            : (
             <span>{weight}</span>
-          )}
+              )}
         </div>
         {/* <div className="ingredient__food-category">
             Food category: <span>{item.foodCategory}</span>
             </div> */}
         <div>
-          {isEdit ? (
+          {isEdit
+            ? (
             <input className="edit-ingredient" {...editImage} />
-          ) : (
+              )
+            : (
             <img className="ingredient__image" src={image} alt={text} />
-          )}
+              )}
         </div>
       </article>
     </div>

@@ -1,11 +1,11 @@
-import React from "react"
+import React from 'react'
 
-export default function Favorite({fill = false}) {
+export default function Favorite ({ fill = false }) {
   const pathStyle = {
-    stroke: "#ff0000",
-    strokeWidth: "30px",
+    stroke: '#ff0000',
+    strokeWidth: '30px',
     transition: 'all ease-in .3s',
-    fill: fill ? '#ff0000' : '#ffffff',
+    fill: fill ? '#ff0000' : '#ffffff'
   }
   return (
     <div className="favorite">
@@ -38,7 +38,7 @@ export default function Favorite({fill = false}) {
         />
       </svg> */}
       <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 455 455"  xmlSpace="preserve">
+	 viewBox="0 0 455 455" xmlSpace="preserve">
 <path style={pathStyle} d="M334.666,308.974c-41.259,44.948-85.648,81.283-107.169,98.029
 	c-21.52-16.746-65.907-53.082-107.166-98.03C61.236,244.592,30,185.717,30,138.714c0-54.24,44.128-98.368,98.368-98.368
 	c35.694,0,68.652,19.454,86.013,50.771l13.119,23.666l13.119-23.666c17.36-31.316,50.318-50.771,86.013-50.771

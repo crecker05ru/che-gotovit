@@ -18,6 +18,7 @@ export default function Steps ({ steps, isEdit, setSteps }: any) {
   }
   useEffect(() => {
     setSteps(editSteps)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editSteps])
   return (
     <ul className="recipe-card__steps">

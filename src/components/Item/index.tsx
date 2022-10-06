@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { roundNumber } from '../../helpers/roundNumber'
 import { useActions } from '../../hooks/useActions'
 import FlipCard from '../FlipCard'
@@ -10,12 +9,7 @@ export default function Item ({ data, openInfoCallback }: any) {
   const { addToMyFavorites, deleteFromMyFavorites } = useActions()
   const [isFavorite, setIsFavorite] = useState(false)
   const [isFlipped, setIsFlipped] = useState(false)
-  const navigate = useNavigate()
-  // console.log("openInfoCallback", openInfoCallback)
 
-  const navigateToItem = () => {
-    navigate(`item-info/${data.label}`)
-  }
   const favoriteHandler = () => {
     if (isFavorite) {
       setIsFavorite(false)

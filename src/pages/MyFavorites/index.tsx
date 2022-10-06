@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import Item from '../../components/Item'
 import Items from '../../components/Items'
 import { useActions } from '../../hooks/useActions'
 import { RootState } from '../../store/store'
 
 export default function MyFavorites () {
-  const { setMyFavorites, deleteFromMyFavorites } = useActions()
+  const { setMyFavorites } = useActions()
   const { myFavorites } = useSelector((state: RootState) => state.myFavorites)
   useEffect(() => {
     setMyFavorites()
     console.log('myFavorites', myFavorites)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
     <div className='favorites wrapper'>

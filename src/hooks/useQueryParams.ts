@@ -15,6 +15,7 @@ export const useQueryParams = () => {
       result = { ...result, [key]: val }
     }
     return result
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params, pathname, replace])
 
   const queryParams: string[][] = useMemo(() => {
@@ -36,6 +37,7 @@ export const useQueryParams = () => {
         return newParams
       }
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [query, queryParams, pathname, replace]
   )
 
@@ -45,6 +47,7 @@ export const useQueryParams = () => {
       currentParams.set(key, value)
       replace(`?${currentParams.toString()}`)
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [pathname, queryParams, replace]
   )
 
@@ -54,11 +57,14 @@ export const useQueryParams = () => {
       currentParams.delete(key)
       replace('')
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [pathname, queryParams, replace]
   )
 
   const restore = useCallback(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     query = {}
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     currentUrl = pathname
     replace('')
   }, [pathname, queryParams, query])

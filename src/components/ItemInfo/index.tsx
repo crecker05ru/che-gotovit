@@ -1,9 +1,6 @@
-import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import React from 'react'
 import { roundNumber } from '../../helpers/roundNumber'
-import { useAppSelector } from '../../store/hooks'
-import { RecipeInfo, Recipe } from '../../types/recipes'
+import { RecipeInfo } from '../../types/recipes'
 
 interface ColorsMap {
   [key: string]: string
@@ -52,31 +49,31 @@ interface ItemInfo {
   closeInfoCallback: () => void
 }
 
-interface totalNutrients {
-  label: string
-  quantity: number
-  unit: string
-}
-interface totalNutrientsArr {
-  0: string
-  1: totalNutrients
-}
+// interface totalNutrients {
+//   label: string
+//   quantity: number
+//   unit: string
+// }
+// interface totalNutrientsArr {
+//   0: string
+//   1: totalNutrients
+// }
 
-interface Digest {
-  label: string
-  tag: string
-  schemaOrgTag: string
-  total: number
-  hasRDI: boolean
-  daily: number
-  unit: string
-  sub: []
-}
+// interface Digest {
+//   label: string
+//   tag: string
+//   schemaOrgTag: string
+//   total: number
+//   hasRDI: boolean
+//   daily: number
+//   unit: string
+//   sub: []
+// }
 
+// eslint-disable-next-line @typescript-eslint/no-redeclare
 export default function ItemInfo ({ info, closeInfoCallback }: ItemInfo) {
-  const params = useParams()
-  const { recipes } = useAppSelector((state) => state.recipes)
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const totalNutrientsArr = React.useMemo(() => {
     return Object.entries(info.totalNutrients).map((item: any) => {
       return (
@@ -90,6 +87,7 @@ export default function ItemInfo ({ info, closeInfoCallback }: ItemInfo) {
     })
   }, [info.totalNutrients])
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const totalDailyArr = React.useMemo(() => {
     return Object.entries(info.totalDaily).map((item: any) => {
       return (
@@ -103,10 +101,6 @@ export default function ItemInfo ({ info, closeInfoCallback }: ItemInfo) {
     })
   }, [info.totalDaily])
 
-  useEffect(() => {
-    console.log('info.digest', info.digest)
-    console.log('totalNutrientsArr', totalNutrientsArr)
-  }, [])
   return (
     <article className="item-info">
       <div className="item-info__back-button" onClick={closeInfoCallback}>

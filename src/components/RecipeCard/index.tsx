@@ -3,9 +3,6 @@ import { useActions } from '../../hooks/useActions'
 import useInput from '../../hooks/useInput'
 import Steps from './Steps'
 import { MyRecipe } from '../../types/myRecipes'
-import { EditableDIV } from '../EditableDIV'
-import Ingredient from './Ingredients/Ingredient'
-import Step from './Steps/Step'
 import Ingredients from './Ingredients'
 
 export default function RecipeCard ({
@@ -20,15 +17,16 @@ export default function RecipeCard ({
   recipeId
 }: MyRecipe) {
   const [isEdit, setIsEdit] = useState(false)
-  const editTitle = useInput(title)
+  // const editTitle = useInput(title)
   const editImage = useInput(image)
   const [editIngredients, setEditIngredients] = useState(ingredients)
   const editWeight = useInput(weight)
   const editTotalTime = useInput(totalTime)
   const [editSteps, setEditSteps] = useState(steps)
   // const editStep = useInput()
-  const editQuantity = useInput(quantity)
-  const editMeasure = useInput(measure)
+  // const editQuantity = useInput(quantity)
+  // const editMeasure = useInput(measure)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [editedRecipe, setEditedRecipe] = useState({})
   const { editMyRecipe } = useActions()
 

@@ -1,23 +1,22 @@
 import React, { useEffect, useState } from 'react'
-import { setConstantValue } from 'typescript'
-import { roundNumber } from '../../../helpers/roundNumber'
 import { useActions } from '../../../hooks/useActions'
 import useInput from '../../../hooks/useInput'
 import Ingredients from '../Ingredients'
 import Ingredient from '../Ingredients/Ingredient'
 
-type Dispatch<A> = (value: A) => void
-type SetStateAction<S> = S | ((prevState: S) => S)
-interface Step {
-  value: string | number
-  onChange: (e: any) => void
-  setValue: Dispatch<SetStateAction<string | number>>
-}
-interface UseInput {
-  value: string | number
-  onChange: (e: any) => void
-  setValue: Dispatch<SetStateAction<string | number>>
-}
+// type Dispatch<A> = (value: A) => void
+// type SetStateAction<S> = S | ((prevState: S) => S)
+// interface Step {
+//   value: string | number
+//   onChange: (e: any) => void
+//   setValue: Dispatch<SetStateAction<string | number>>
+// }
+// interface UseInput {
+//   value: string | number
+//   onChange: (e: any) => void
+//   setValue: Dispatch<SetStateAction<string | number>>
+// }
+// eslint-disable-next-line @typescript-eslint/no-redeclare
 interface Ingredient {
   title: string
   image: string
@@ -25,18 +24,19 @@ interface Ingredient {
   measure: string
   weight: string
 }
-interface UseInputIngredient {
-  title: UseInput
-  image: UseInput
-  quantity: UseInput
-  measure: UseInput
-  weight: number
-}
-interface IngredientState {
-  initialState: Ingredient
-  onChange: (e: any) => void
-  setValue: Dispatch<SetStateAction<string | number | Ingredient>>
-}
+// interface UseInputIngredient {
+//   title: UseInput
+//   image: UseInput
+//   quantity: UseInput
+//   measure: UseInput
+//   weight: number
+// }
+// interface IngredientState {
+//   initialState: Ingredient
+//   onChange: (e: any) => void
+//   setValue: Dispatch<SetStateAction<string | number | Ingredient>>
+// }
+// eslint-disable-next-line @typescript-eslint/no-redeclare
 interface Ingredients {
   [index: number]: Ingredient
 }
@@ -52,6 +52,7 @@ export default function СreateRecipe () {
   const image = useInput('')
   const weight = useInput()
   const totalTime = useInput()
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [ingredient, setIngredient] = useState(currentIngredient)
   const [ingredients, setIngredients] = useState<Ingredient[]>([])
   const ingredientTitle = useInput('')
@@ -62,6 +63,7 @@ export default function СreateRecipe () {
   const ingredientWeight = useInput()
   const step: any = useInput('')
   const [steps, setSteps] = useState<string[]>([])
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [recipe, setRecipe] = useState({})
   const { addMyRecipe, setMyRecipes } = useActions()
 
@@ -108,6 +110,7 @@ export default function СreateRecipe () {
 
   useEffect(() => {
     setMyRecipes()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
     <div className="create-recipe">

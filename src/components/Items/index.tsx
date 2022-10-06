@@ -1,10 +1,7 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useState } from 'react'
 import Item from '../Item'
-import { Routes, Route } from 'react-router-dom'
 import ItemInfo from '../ItemInfo'
-import { useAppSelector } from '../../store/hooks'
-import { Recipe, RecipeInfo } from '../../types/recipes'
-import Loader from '../app/Loader'
+import {  RecipeInfo } from '../../types/recipes'
 
 export default function Items ({ recipes }: any) {
   const [currentItem, setCurrentItem] = useState<RecipeInfo | undefined>(undefined)

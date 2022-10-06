@@ -1,6 +1,6 @@
 import { MyRecipe } from '../../types/myRecipes'
 import { http } from './../../api/http'
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 export interface MyRecipesState {
   myRecipes: MyRecipe[]

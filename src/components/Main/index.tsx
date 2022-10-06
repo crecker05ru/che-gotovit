@@ -1,24 +1,22 @@
 import React, { useEffect, useState } from 'react'
-import { http } from '../../api/http'
 import Items from '../Items'
 import Search from '../Search'
-import { Outlet, Link } from 'react-router-dom'
 import { useQueryParams } from '../../hooks/useQueryParams'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useActions } from '../../hooks/useActions'
 import { RootState } from '../../store/store'
-import ProcentCircle from '../ProcentCircle'
 import Loader from '../app/Loader'
-import { TransformedRecipe } from '../../types/recipes'
 
 export default function Main () {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [data, setData] = useState()
   const query = useQueryParams()
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [que, setQue] = useState({ ...query.query })
   const { recipes, status } = useSelector((state: RootState) => state.recipes)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { setRecipes, fetchRecipes } = useActions()
   const transformedRecipes = recipes && recipes.map((item) => item = { ...item.recipe } as any)
-  const dispatch = useDispatch()
 
   useEffect(() => {
     if (!que) {
@@ -45,6 +43,7 @@ export default function Main () {
     console.log('query.location', query.location)
     console.log('que', que)
     getData()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query.currentUrl])
 
   const [isLoading, setIsLoading] = useState(false)
@@ -58,6 +57,7 @@ export default function Main () {
       setIsLoading(false)
     }
     console.log('recipes', recipes)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status])
   return (
     <main className="main">

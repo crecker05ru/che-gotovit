@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import useInput from '../../hooks/useInput'
-import { useNavigate, useParams, useLocation, useRoutes, useMatch } from 'react-router-dom'
+import {  useParams, useLocation } from 'react-router-dom'
 import { useQueryParams } from '../../hooks/useQueryParams'
 import { http } from '../../api/http'
 // import { URLSearchParams } from 'url'
@@ -10,9 +10,9 @@ export default function Search () {
   const search = useInput('')
   const [queryParams, setQueryParams] = useState({})
   const params = useParams()
-  const navigate = useNavigate()
   const location = useLocation()
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const par = useMemo(() => {
     return {
       ...(search.value && { q: search.value })
@@ -29,6 +29,7 @@ export default function Search () {
     console.log('location', location)
     // query.addQueryParams({'q': search.value})
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     async function getData () {
       // const response = await http.get('',{params: {q: 'pot'}})
       const response = await http.get('', { params: query.query })
@@ -66,6 +67,7 @@ export default function Search () {
     console.log('search', search.value)
     console.log('params', params)
     console.log('location', location)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query.query])
 
   return (

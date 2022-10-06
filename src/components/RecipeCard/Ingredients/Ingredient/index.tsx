@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import { roundNumber } from '../../../../helpers/roundNumber'
-import { useActions } from '../../../../hooks/useActions'
+import React, { useEffect } from 'react'
 import useInput from '../../../../hooks/useInput'
 
 export default function Ingredient ({
@@ -26,6 +24,7 @@ export default function Ingredient ({
   // const editModeHandler = () => {
   //   setIsEdit(true)
   // }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const editIngredientHandler = () => {
     const item = {
       id,
@@ -51,6 +50,7 @@ export default function Ingredient ({
       measure: editMeasure.value
     }
     updateIngredient(id, item)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     editText.value,
     editWeight.value,

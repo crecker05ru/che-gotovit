@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, {  useState } from 'react'
 
 export default function Step ({ id, value, updateSteps }: any) {
   const [editStep, setEditStep] = useState(value)

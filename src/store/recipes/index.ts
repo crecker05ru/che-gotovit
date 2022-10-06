@@ -1,6 +1,6 @@
-import { Recipe, RecipeInfo } from './../../types/recipes'
+import { Recipe } from './../../types/recipes'
 import { http } from './../../api/http'
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 export interface RecipesState {
   recipes: [Recipe] | []
   status: 'idle' | 'loading' | 'failed'

@@ -1,12 +1,13 @@
 import React from 'react'
-import { ReactComponent as Circle } from '../../assets/svg/circle-svg.svg'
 import { roundNumber } from '../../helpers/roundNumber'
 
 export default function ProcentCircle ({ procent = 0, stroke = '#00ff5e' }) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [fillCircle, setFillCircle] = React.useState(316)
   const currentProcent = roundNumber(procent)
   const currentFill = React.useMemo(() => {
     return currentProcent > 100 ? 0 : fillCircle - fillCircle * (currentProcent / 100)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [procent])
 
   const pathStyle = {

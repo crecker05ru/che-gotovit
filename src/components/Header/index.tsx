@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, NavLink, useMatch } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 const navigationLinks = [{
   to: '/',
@@ -23,12 +23,12 @@ const navigationLinks = [{
 { to: 'about', name: 'About' }
 ]
 export default function Header () {
-  const activeStyle = {
-    textDecoration: 'underline',
-    backgroundColor: 'ffffff'
-  }
+  // const activeStyle = {
+  //   textDecoration: 'underline',
+  //   backgroundColor: 'ffffff'
+  // }
   const activeClassName = 'navigation-item__active'
-  const isActive = useMatch('/')
+  // const isActive = useMatch('/')
   return (
     <header className="header">
       <div className="header__content">

@@ -17,6 +17,7 @@ export default function Ingredients ({
   useEffect(() => {
     setIngredients(editIngredients)
     console.log('editIngredients', editIngredients)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editIngredients])
 
   return (

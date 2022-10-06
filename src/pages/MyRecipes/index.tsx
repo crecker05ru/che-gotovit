@@ -11,6 +11,7 @@ export default function MyRecipes () {
 
   useEffect(() => {
     setMyRecipes()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
     <div className="my-recipes wrapper">

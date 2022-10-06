@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useState, useEffect, useMemo } from 'react'
+import React, {  useState, useEffect, useMemo } from 'react'
 
 interface FlipCardProps {
   children: JSX.Element[]
@@ -35,6 +35,7 @@ export default function FlipCard (props: FlipCardProps): JSX.Element {
       setIsFlipped(props.isFlipped)
       setRotation((c) => c + 180)
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.isFlipped])
 
   const getContainerClassName = useMemo(() => {

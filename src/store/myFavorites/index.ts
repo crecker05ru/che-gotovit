@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { MyRecipe } from '../../types/myRecipes'
 import { RecipeInfo } from '../../types/recipes'
 
 export interface MyFavoritesState {

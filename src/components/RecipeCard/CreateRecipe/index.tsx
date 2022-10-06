@@ -67,6 +67,7 @@ export default function СreateRecipe () {
 
   const addStep = () => {
     setSteps(steps.concat([step.value]))
+    step.setValue('')
     // console.log("steps", steps)
   }
 
@@ -79,6 +80,11 @@ export default function СreateRecipe () {
       weight: ingredientWeight.value as string
     }
     setIngredients(ingredients.concat([ingredient]))
+    ingredientTitle.setValue('')
+    ingredientImage.setValue('')
+    ingredientQuantity.setValue('')
+    ingredientMeasure.setValue('')
+    ingredientWeight.setValue('')
     console.log('ingredients', ingredients)
   }
   const createRecipe = () => {
@@ -92,6 +98,12 @@ export default function СreateRecipe () {
     }
     setRecipe(item)
     addMyRecipe(item)
+    title.setValue('')
+    image.setValue('')
+    weight.setValue('')
+    totalTime.setValue('')
+    setIngredients([])
+    setSteps([])
   }
 
   useEffect(() => {

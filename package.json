@@ -28,6 +28,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:jest": "jest",
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.js src/**/*.ts src/**/*.jsx src/**/*.tsx",
     "lint:fix": "eslint --fix src"

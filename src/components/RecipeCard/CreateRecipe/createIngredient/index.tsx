@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import useInput from '../../hooks/useInput'
-import { Ingredient } from '../../types/myRecipes'
+import useInput from '../../../../hooks/useInput'
+import { Ingredient } from '../../../../types/myRecipes'
 
 export default function CreateIngredient () {
   const title = useInput('')
